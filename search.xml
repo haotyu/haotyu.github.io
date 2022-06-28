@@ -42,62 +42,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MYSQL数据库基础(一) 创建数据库</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></table></figure>
-<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database xiaoyudi character set utf8 collate utf8_general_ci;<br>create database xiaoyudi character set gbk collate gbk_chinese_ci;<br></code></pre></td></tr></table></figure>
-<h5 id="3、查看当前使用的数据库"><a href="#3、查看当前使用的数据库" class="headerlink" title="3、查看当前使用的数据库"></a>3、查看当前使用的数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></table></figure>
-<h3 id="二、查看数据库信息"><a href="#二、查看数据库信息" class="headerlink" title="二、查看数据库信息"></a>二、查看数据库信息</h3><h5 id="1、查看数据库所支持存储引擎"><a href="#1、查看数据库所支持存储引擎" class="headerlink" title="1、查看数据库所支持存储引擎"></a>1、查看数据库所支持存储引擎</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show engines;<br></code></pre></td></tr></table></figure>
-<h5 id="2-查看数据库所支持的字符集"><a href="#2-查看数据库所支持的字符集" class="headerlink" title="2.查看数据库所支持的字符集"></a>2.查看数据库所支持的字符集</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%character%&quot;;<br></code></pre></td></tr></table></figure>
-<h5 id="3、查看数据库所支持的编码规则"><a href="#3、查看数据库所支持的编码规则" class="headerlink" title="3、查看数据库所支持的编码规则"></a>3、查看数据库所支持的编码规则</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%collation%&quot;;<br></code></pre></td></tr></table></figure>
-<h3 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h3><h5 id="1、使用数据库"><a href="#1、使用数据库" class="headerlink" title="1、使用数据库"></a>1、使用数据库</h5><p>数据库：xiaoyudi</p>
-<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">use xiaoyudi<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-<h5 id="2、删除数据表"><a href="#2、删除数据表" class="headerlink" title="2、删除数据表"></a>2、删除数据表</h5><p><em><strong>数据表</strong></em>：xiaoyudi1_tbl</p>
-<figure class="highlight pf"><table><tr><td class="code"><pre><code class="hljs pf"><span class="hljs-keyword">drop</span> <span class="hljs-built_in">table</span> xiaoyudi1_tbl;<br></code></pre></td></tr></table></figure>
-<h5 id="3、编码规则和字符集在创建数据库时设置可以继承给数据表"><a href="#3、编码规则和字符集在创建数据库时设置可以继承给数据表" class="headerlink" title="3、编码规则和字符集在创建数据库时设置可以继承给数据表"></a>3、编码规则和字符集在创建数据库时设置可以继承给数据表</h5>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>创建数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL数据库基础(三) 数据数据增、删、改</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/</url>
-    <content><![CDATA[<h3 id="一、-向数据表插入数据-insert-into"><a href="#一、-向数据表插入数据-insert-into" class="headerlink" title="一、 向数据表插入数据(insert into)"></a>一、 向数据表插入数据(insert into)</h3><p><strong>表</strong>：teaching<br><strong>数据</strong>：C01    101 | C02    102<br><strong>字段</strong>：cno    tno</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> teaching(cno,tno) <span class="hljs-keyword">values</span>(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;101&quot;</span>),(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;102&quot;</span>);<br></code></pre></td></tr></table></figure>
-<p>在添加的数据填满表字段时，可省掉字段,</p>
-<ul>
-<li>即：<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> teaching <span class="hljs-keyword">values</span>(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;101&quot;</span>),(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;102&quot;</span>);<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="二、-删除数据表的数据-delete"><a href="#二、-删除数据表的数据-delete" class="headerlink" title="二、 删除数据表的数据(delete)"></a>二、 删除数据表的数据(delete)</h3><h5 id="1、删除指定字段整列数据"><a href="#1、删除指定字段整列数据" class="headerlink" title="1、删除指定字段整列数据"></a>1、删除指定字段整列数据</h5><p>表：student</p>
-<p>数据：sno 字段为 2005020103 的那列数据</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sno = <span class="hljs-number">2005020103</span>;<br></code></pre></td></tr></table></figure>
-
-<h5 id="2、删除数据表所有数据"><a href="#2、删除数据表所有数据" class="headerlink" title="2、删除数据表所有数据"></a>2、删除数据表所有数据</h5><p>表：student</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
-
-<h3 id="三、修改数据库的数据-update"><a href="#三、修改数据库的数据-update" class="headerlink" title="三、修改数据库的数据(update)"></a>三、修改数据库的数据(update)</h3><h5 id="1、修改指定数据"><a href="#1、修改指定数据" class="headerlink" title="1、修改指定数据"></a>1、修改指定数据</h5><p>表：student </p>
-<p>修该：把 sno = 2005010101 的 sname 字段的内容为 刘一二 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">update student set sname = &quot;刘一二&quot; where sno = 2005010101;<br></code></pre></td></tr></table></figure>
-
-<h5 id="2、修改整个数据表中的指定列"><a href="#2、修改整个数据表中的指定列" class="headerlink" title="2、修改整个数据表中的指定列"></a>2、修改整个数据表中的指定列</h5><p>表：student</p>
-<p>修改：把 整个表的所有asddress 字段都修改为 “广东茂名”</p>
-<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">update student set saddress <span class="hljs-operator">=</span> <span class="hljs-string">&quot;广东茂名&quot;</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>​<br>​<br>​    </p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MYSQL数据库基础(二) 数据表结构操作</title>
     <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h3 id="一、创建数据表"><a href="#一、创建数据表" class="headerlink" title="一、创建数据表"></a>一、创建数据表</h3><h5 id="1-创建数据表并设置主键"><a href="#1-创建数据表并设置主键" class="headerlink" title="1.创建数据表并设置主键"></a>1.创建数据表并设置主键</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl<br><em><strong>字段</strong></em>：name age<br><em><strong>数据类型和范围</strong></em>：varchar(20)   int<br><em><strong>设置不允许为空值</strong></em>：not null<br><em><strong>设置主键</strong></em>：primary key</p>
@@ -146,6 +90,62 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiao_tbl(sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>),<span class="hljs-keyword">check</span>(sex <span class="hljs-operator">=</span> &quot;男&quot; <span class="hljs-keyword">or</span> &quot;女&quot;));<br></code></pre></td></tr></table></figure>
 <p><strong>创建表后修改表</strong>:</p>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xiao_tbl <span class="hljs-keyword">add</span> <span class="hljs-keyword">check</span>(sex = &quot;男&quot; <span class="hljs-keyword">or</span> &quot;女&quot;);<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MYSQL数据库基础(一) 创建数据库</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></table></figure>
+<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database xiaoyudi character set utf8 collate utf8_general_ci;<br>create database xiaoyudi character set gbk collate gbk_chinese_ci;<br></code></pre></td></tr></table></figure>
+<h5 id="3、查看当前使用的数据库"><a href="#3、查看当前使用的数据库" class="headerlink" title="3、查看当前使用的数据库"></a>3、查看当前使用的数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></table></figure>
+<h3 id="二、查看数据库信息"><a href="#二、查看数据库信息" class="headerlink" title="二、查看数据库信息"></a>二、查看数据库信息</h3><h5 id="1、查看数据库所支持存储引擎"><a href="#1、查看数据库所支持存储引擎" class="headerlink" title="1、查看数据库所支持存储引擎"></a>1、查看数据库所支持存储引擎</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show engines;<br></code></pre></td></tr></table></figure>
+<h5 id="2-查看数据库所支持的字符集"><a href="#2-查看数据库所支持的字符集" class="headerlink" title="2.查看数据库所支持的字符集"></a>2.查看数据库所支持的字符集</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%character%&quot;;<br></code></pre></td></tr></table></figure>
+<h5 id="3、查看数据库所支持的编码规则"><a href="#3、查看数据库所支持的编码规则" class="headerlink" title="3、查看数据库所支持的编码规则"></a>3、查看数据库所支持的编码规则</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%collation%&quot;;<br></code></pre></td></tr></table></figure>
+<h3 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h3><h5 id="1、使用数据库"><a href="#1、使用数据库" class="headerlink" title="1、使用数据库"></a>1、使用数据库</h5><p>数据库：xiaoyudi</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">use xiaoyudi<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<h5 id="2、删除数据表"><a href="#2、删除数据表" class="headerlink" title="2、删除数据表"></a>2、删除数据表</h5><p><em><strong>数据表</strong></em>：xiaoyudi1_tbl</p>
+<figure class="highlight pf"><table><tr><td class="code"><pre><code class="hljs pf"><span class="hljs-keyword">drop</span> <span class="hljs-built_in">table</span> xiaoyudi1_tbl;<br></code></pre></td></tr></table></figure>
+<h5 id="3、编码规则和字符集在创建数据库时设置可以继承给数据表"><a href="#3、编码规则和字符集在创建数据库时设置可以继承给数据表" class="headerlink" title="3、编码规则和字符集在创建数据库时设置可以继承给数据表"></a>3、编码规则和字符集在创建数据库时设置可以继承给数据表</h5>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>创建数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MYSQL数据库基础(三) 数据数据增、删、改</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/</url>
+    <content><![CDATA[<h3 id="一、-向数据表插入数据-insert-into"><a href="#一、-向数据表插入数据-insert-into" class="headerlink" title="一、 向数据表插入数据(insert into)"></a>一、 向数据表插入数据(insert into)</h3><p><strong>表</strong>：teaching<br><strong>数据</strong>：C01    101 | C02    102<br><strong>字段</strong>：cno    tno</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> teaching(cno,tno) <span class="hljs-keyword">values</span>(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;101&quot;</span>),(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;102&quot;</span>);<br></code></pre></td></tr></table></figure>
+<p>在添加的数据填满表字段时，可省掉字段,</p>
+<ul>
+<li>即：<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> teaching <span class="hljs-keyword">values</span>(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;101&quot;</span>),(<span class="hljs-string">&quot;C01&quot;</span>,<span class="hljs-string">&quot;102&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="二、-删除数据表的数据-delete"><a href="#二、-删除数据表的数据-delete" class="headerlink" title="二、 删除数据表的数据(delete)"></a>二、 删除数据表的数据(delete)</h3><h5 id="1、删除指定字段整列数据"><a href="#1、删除指定字段整列数据" class="headerlink" title="1、删除指定字段整列数据"></a>1、删除指定字段整列数据</h5><p>表：student</p>
+<p>数据：sno 字段为 2005020103 的那列数据</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sno = <span class="hljs-number">2005020103</span>;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2、删除数据表所有数据"><a href="#2、删除数据表所有数据" class="headerlink" title="2、删除数据表所有数据"></a>2、删除数据表所有数据</h5><p>表：student</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、修改数据库的数据-update"><a href="#三、修改数据库的数据-update" class="headerlink" title="三、修改数据库的数据(update)"></a>三、修改数据库的数据(update)</h3><h5 id="1、修改指定数据"><a href="#1、修改指定数据" class="headerlink" title="1、修改指定数据"></a>1、修改指定数据</h5><p>表：student </p>
+<p>修该：把 sno = 2005010101 的 sname 字段的内容为 刘一二 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">update student set sname = &quot;刘一二&quot; where sno = 2005010101;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2、修改整个数据表中的指定列"><a href="#2、修改整个数据表中的指定列" class="headerlink" title="2、修改整个数据表中的指定列"></a>2、修改整个数据表中的指定列</h5><p>表：student</p>
+<p>修改：把 整个表的所有asddress 字段都修改为 “广东茂名”</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">update student set saddress <span class="hljs-operator">=</span> <span class="hljs-string">&quot;广东茂名&quot;</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>​<br>​<br>​    </p>
+]]></content>
       <categories>
         <category>数据库</category>
       </categories>
@@ -234,37 +234,6 @@
       </categories>
       <tags>
         <tag>视图</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL数据库基础(六) 嵌套查询</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
-<p>字段：cno 、degree sname</p>
-<p>作用：从student表查询到的结果当sc 表的查询条件的一部分</p>
-<p>要求：查询 “小明” 同学所选的 cno 和degree 。  </p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> cno,<span class="hljs-function">degree <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> sno <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-keyword">select</span> sno <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sname = <span class="hljs-string">&quot;小明&quot;</span></span>)</span>;<br></code></pre></td></tr></table></figure>
-
-<h3 id="二、嵌套查询-exists"><a href="#二、嵌套查询-exists" class="headerlink" title="二、嵌套查询(exists)"></a>二、嵌套查询(exists)</h3><p>exists 只会返回true 和 false</p>
-<p>表：student</p>
-<p>字段：sno,sname,sbirthday</p>
-<p>作用：把外层查询到的结果，放入内层去对比 结果成立 返回 true 反之 返回false</p>
-<p>要求：(1)   查询姓李的同学和年龄超过30岁的学号、姓名、年龄。  </p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sno,sname,<span class="hljs-keyword">year</span>(<span class="hljs-built_in">current_date</span>)<span class="hljs-operator">-</span><span class="hljs-keyword">year</span>(sbirthday) <span class="hljs-keyword">from</span> student a <span class="hljs-keyword">where</span> sname <span class="hljs-keyword">like</span> &quot;李%&quot; <span class="hljs-keyword">and</span> <span class="hljs-keyword">exists</span>(<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">year</span>(<span class="hljs-built_in">current_date</span>)<span class="hljs-operator">-</span><span class="hljs-keyword">year</span>(a.sbirthday)<span class="hljs-operator">&gt;</span><span class="hljs-number">30</span>);<br></code></pre></td></tr></table></figure>
-
-<h3 id="三、相关子查询-in"><a href="#三、相关子查询-in" class="headerlink" title="三、相关子查询(in)"></a>三、相关子查询(in)</h3><p>依赖于外层查询结果</p>
-<p>表：sc</p>
-<p>字段：* (所有)</p>
-<p>作用：把外层查询到的结果，放入内层去查询再返回结果</p>
-<p>要求：查询 每课成绩大于平均成绩的信息</p>
-<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> sc a <span class="hljs-keyword">where</span> degree &gt; (<span class="hljs-keyword">select</span> <span class="hljs-keyword">avg</span>(degree) <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> a.sno=sc.sno);<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>嵌套查询</tag>
       </tags>
   </entry>
   <entry>
@@ -400,6 +369,37 @@
       </categories>
       <tags>
         <tag>简单查询</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MYSQL数据库基础(六) 嵌套查询</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
+<p>字段：cno 、degree sname</p>
+<p>作用：从student表查询到的结果当sc 表的查询条件的一部分</p>
+<p>要求：查询 “小明” 同学所选的 cno 和degree 。  </p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> cno,<span class="hljs-function">degree <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> sno <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-keyword">select</span> sno <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sname = <span class="hljs-string">&quot;小明&quot;</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、嵌套查询-exists"><a href="#二、嵌套查询-exists" class="headerlink" title="二、嵌套查询(exists)"></a>二、嵌套查询(exists)</h3><p>exists 只会返回true 和 false</p>
+<p>表：student</p>
+<p>字段：sno,sname,sbirthday</p>
+<p>作用：把外层查询到的结果，放入内层去对比 结果成立 返回 true 反之 返回false</p>
+<p>要求：(1)   查询姓李的同学和年龄超过30岁的学号、姓名、年龄。  </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sno,sname,<span class="hljs-keyword">year</span>(<span class="hljs-built_in">current_date</span>)<span class="hljs-operator">-</span><span class="hljs-keyword">year</span>(sbirthday) <span class="hljs-keyword">from</span> student a <span class="hljs-keyword">where</span> sname <span class="hljs-keyword">like</span> &quot;李%&quot; <span class="hljs-keyword">and</span> <span class="hljs-keyword">exists</span>(<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> <span class="hljs-keyword">year</span>(<span class="hljs-built_in">current_date</span>)<span class="hljs-operator">-</span><span class="hljs-keyword">year</span>(a.sbirthday)<span class="hljs-operator">&gt;</span><span class="hljs-number">30</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、相关子查询-in"><a href="#三、相关子查询-in" class="headerlink" title="三、相关子查询(in)"></a>三、相关子查询(in)</h3><p>依赖于外层查询结果</p>
+<p>表：sc</p>
+<p>字段：* (所有)</p>
+<p>作用：把外层查询到的结果，放入内层去查询再返回结果</p>
+<p>要求：查询 每课成绩大于平均成绩的信息</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> sc a <span class="hljs-keyword">where</span> degree &gt; (<span class="hljs-keyword">select</span> <span class="hljs-keyword">avg</span>(degree) <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> a.sno=sc.sno);<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>嵌套查询</tag>
       </tags>
   </entry>
   <entry>
@@ -596,6 +596,111 @@
       </tags>
   </entry>
   <entry>
+    <title>python基础之字符串操作</title>
+    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="一、统一英文大小写"><a href="#一、统一英文大小写" class="headerlink" title="一、统一英文大小写"></a>一、统一英文大小写</h3><p>1、统一英文大写  <strong>upper()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;ABcDefg&quot;</span><br><span class="hljs-built_in">print</span>(a.upper())<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  ABCDEFG</p>
+<p>2、统一英文小写  <strong>lower()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;ABcDefg&quot;</span><br><span class="hljs-built_in">print</span>(a.lower())<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  abcdefg</p>
+<h3 id="二、去除字符串首尾空格"><a href="#二、去除字符串首尾空格" class="headerlink" title="二、去除字符串首尾空格"></a>二、去除字符串首尾空格</h3><p>1、去除字符串开头空格  <strong>lstrip()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.lstrip())<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  hello world!   </p>
+<p>2、去除字符串末尾空格  <strong>rstrip()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.rstrip())<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>     hello world!</p>
+<p>3、去除字符串首位空格  <strong>strip()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.strip())<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  hello world!</p>
+<h3 id="三、拆分字符串-split"><a href="#三、拆分字符串-split" class="headerlink" title="三、拆分字符串  split()"></a>三、拆分字符串  split()</h3><p>把字符串 a 以   ,   分割返回列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello,world,!&quot;</span><br><span class="hljs-built_in">print</span>(a.split(<span class="hljs-string">&quot;,&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘hello’, ‘world’, ‘!’]</p>
+<h3 id="四、查找子串的位置-find"><a href="#四、查找子串的位置-find" class="headerlink" title="四、查找子串的位置  find()"></a>四、查找子串的位置  find()</h3><p>说明：find() 函数如果字符串中有所查的子串 返回子串位置 ，否则返回 -1</p>
+<p>1、查找 “world”  在字符串 a 中的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(a.find(<span class="hljs-string">&quot;world&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  6</p>
+<p>2、查找 “xiaoming”  在字符串 a 中的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(a.find(<span class="hljs-string">&quot;xiaoming&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  -1</p>
+<h3 id="五、截取字符串"><a href="#五、截取字符串" class="headerlink" title="五、截取字符串 [:::]"></a>五、截取字符串 [:::]</h3><p>说明： string[起始索引:结尾索引:步涨]</p>
+<p>1、截取字符串  的 前3 位字符 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>])<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong> 012</p>
+<p>2、截取字符串 的 后3 位字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[-<span class="hljs-number">3</span>::])  <span class="hljs-comment"># : 截取全部字符</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  789</p>
+<p>3、截取字符串中位置 为 奇数 的字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">1</span>::<span class="hljs-number">2</span>])  <span class="hljs-comment"># : 截取全部字符</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  13579</p>
+<p>4、截取字符串中位置 为 偶数 的字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[::<span class="hljs-number">2</span>])  <span class="hljs-comment">#不设置初始值 默认为0</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  02468</p>
+<p>5、将字符串倒序截取输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[::-<span class="hljs-number">1</span>]) <span class="hljs-comment">#截取全部字符串 步涨值为-1</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  9876543210</p>
+<h3 id="六、字符串替换-replace"><a href="#六、字符串替换-replace" class="headerlink" title="六、字符串替换 replace()"></a>六、字符串替换 replace()</h3><p>说明：replace(要替换的字符串,替换后的字符串)</p>
+<p>把 a 字符串 中的 “HELLO” 替换为 “hello”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;HELLO world!&quot;</span><br><span class="hljs-built_in">print</span>(a.replace(<span class="hljs-string">&quot;HELLO&quot;</span>,<span class="hljs-string">&quot;hello&quot;</span>))<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  hello world!</p>
+<h3 id="七、获取字符串的长度-len"><a href="#七、获取字符串的长度-len" class="headerlink" title="七、获取字符串的长度 len()"></a>七、获取字符串的长度 len()</h3><p>返回 a 字符串的长度</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(a))<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  12</p>
+<h3 id="八、使字符串居中显示-center"><a href="#八、使字符串居中显示-center" class="headerlink" title="八、使字符串居中显示   center()"></a>八、使字符串居中显示   center()</h3><p>说明：center(width,filechar)  </p>
+<p>width 字符串排版总宽   </p>
+<p>filechar 为填充字符</p>
+<p>1、将 “12321” 在 7个字符宽度里居中显示</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;12321&quot;</span><br><span class="hljs-built_in">print</span>(a.center(<span class="hljs-number">7</span>))<br><br></code></pre></td></tr></table></figure>
+
+<p> <strong>&gt;&gt;&gt;</strong>   12321 </p>
+<p>2、将 “12321” 在 7个字符宽度里居中显示,并用  *  填充</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;12321&quot;</span><br><span class="hljs-built_in">print</span>(a.center(<span class="hljs-number">7</span>,<span class="hljs-string">&quot;*&quot;</span>))<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  *12321*</p>
+<h3 id="九、统计子字符串出现次数-count"><a href="#九、统计子字符串出现次数-count" class="headerlink" title="九、统计子字符串出现次数  count()"></a>九、统计子字符串出现次数  count()</h3><p>说明：count(sub,start=0,end(string))</p>
+<p>sub：搜索的子字符串 </p>
+<p>start：字符串搜索开始位置，默认为第一个位置</p>
+<p>end：字符串搜索结束位置，默认为最后一个位置</p>
+<p>1、统计字符串中 “ab” 出现的次数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abababcdababab&quot;</span><br><span class="hljs-built_in">print</span>(a.count(<span class="hljs-string">&quot;ab&quot;</span>))<br><br></code></pre></td></tr></table></figure>
+
+<p> <strong>&gt;&gt;&gt;</strong>  6</p>
+<p>2、统计字符串从位置为 3~9 之间中 “ab” 出现的次数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abababcdababab&quot;</span><br><span class="hljs-built_in">print</span>(a.count(<span class="hljs-string">&quot;ab&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>))<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  1</p>
+<h3 id="十、新字符串生成-join"><a href="#十、新字符串生成-join" class="headerlink" title="十、新字符串生成  join()"></a>十、新字符串生成  join()</h3><p>1、将一个字符串 在每个字符中间加入 -   返回一个新字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abcdefg&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span>.join(a))<br><br></code></pre></td></tr></table></figure>
+
+<p>  <strong>&gt;&gt;&gt;</strong>  a-b-c-d-e-f-g</p>
+<p>2、将一个列表中的每个字符连接在一起输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>.join(a))<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  abc</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>字符串操作</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python基础之常用数据结构</title>
     <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
@@ -701,108 +806,70 @@
       </tags>
   </entry>
   <entry>
-    <title>python基础之字符串操作</title>
-    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h3 id="一、统一英文大小写"><a href="#一、统一英文大小写" class="headerlink" title="一、统一英文大小写"></a>一、统一英文大小写</h3><p>1、统一英文大写  <strong>upper()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;ABcDefg&quot;</span><br><span class="hljs-built_in">print</span>(a.upper())<br></code></pre></td></tr></table></figure>
+    <title>python基础之编码与进制</title>
+    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/</url>
+    <content><![CDATA[<h3 id="一、Ascii-码转换-ord"><a href="#一、Ascii-码转换-ord" class="headerlink" title="一、Ascii 码转换   ord()"></a>一、Ascii 码转换   ord()</h3><p>将字符 a 转换为 Ascii码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;a&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">ord</span>(a))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  ABCDEFG</p>
-<p>2、统一英文小写  <strong>lower()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;ABcDefg&quot;</span><br><span class="hljs-built_in">print</span>(a.lower())<br></code></pre></td></tr></table></figure>
+<p> <strong>&gt;&gt;&gt;</strong>  97</p>
+<h3 id="二、Ascii-码转换为普通字符-chr"><a href="#二、Ascii-码转换为普通字符-chr" class="headerlink" title="二、Ascii 码转换为普通字符 chr()"></a>二、Ascii 码转换为普通字符 chr()</h3><p>将 ascii 码 97 转换为普通字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">97</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(a))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  abcdefg</p>
-<h3 id="二、去除字符串首尾空格"><a href="#二、去除字符串首尾空格" class="headerlink" title="二、去除字符串首尾空格"></a>二、去除字符串首尾空格</h3><p>1、去除字符串开头空格  <strong>lstrip()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.lstrip())<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  a</p>
+<h3 id="三、进制转换"><a href="#三、进制转换" class="headerlink" title="三、进制转换"></a>三、进制转换</h3><h4 id="1、二-进制转换为其他进制"><a href="#1、二-进制转换为其他进制" class="headerlink" title="1、二 进制转换为其他进制"></a>1、二 进制转换为其他进制</h4><p>2  进制转  8  进制  oct(int(n,2))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>)))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  hello world!   </p>
-<p>2、去除字符串末尾空格  <strong>rstrip()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.rstrip())<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0o12</p>
+<p>2  进制转 10 进制  int(n,2)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>     hello world!</p>
-<p>3、去除字符串首位空格  <strong>strip()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;   hello world!   &quot;</span><br><span class="hljs-built_in">print</span>(a.strip())<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  10</p>
+<p>2  进制转 16 进制  hex(int(n,2))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>)))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  hello world!</p>
-<h3 id="三、拆分字符串-split"><a href="#三、拆分字符串-split" class="headerlink" title="三、拆分字符串  split()"></a>三、拆分字符串  split()</h3><p>把字符串 a 以   ,   分割返回列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello,world,!&quot;</span><br><span class="hljs-built_in">print</span>(a.split(<span class="hljs-string">&quot;,&quot;</span>))<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0xa</p>
+<h4 id="2、八进制转换为其他进制"><a href="#2、八进制转换为其他进制" class="headerlink" title="2、八进制转换为其他进制"></a>2、八进制转换为其他进制</h4><p>8 进制转 2 进制  bin(int(n,8))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>)))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  [‘hello’, ‘world’, ‘!’]</p>
-<h3 id="四、查找子串的位置-find"><a href="#四、查找子串的位置-find" class="headerlink" title="四、查找子串的位置  find()"></a>四、查找子串的位置  find()</h3><p>说明：find() 函数如果字符串中有所查的子串 返回子串位置 ，否则返回 -1</p>
-<p>1、查找 “world”  在字符串 a 中的位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(a.find(<span class="hljs-string">&quot;world&quot;</span>))<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0b1000001000</p>
+<p>8 进制转 10 进制  int(n,8)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  6</p>
-<p>2、查找 “xiaoming”  在字符串 a 中的位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(a.find(<span class="hljs-string">&quot;xiaoming&quot;</span>))<br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  520</p>
+<p>8 进制转 16 进制  hex(int(n,8))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>)))<br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  -1</p>
-<h3 id="五、截取字符串"><a href="#五、截取字符串" class="headerlink" title="五、截取字符串 [:::]"></a>五、截取字符串 [:::]</h3><p>说明： string[起始索引:结尾索引:步涨]</p>
-<p>1、截取字符串  的 前3 位字符 </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>])<br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0x208</p>
+<h4 id="3、十进制转换为其他进制"><a href="#3、十进制转换为其他进制" class="headerlink" title="3、十进制转换为其他进制"></a>3、十进制转换为其他进制</h4><p>10 进制转 2 进制  bin(int(n,10))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong> 012</p>
-<p>2、截取字符串 的 后3 位字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[-<span class="hljs-number">3</span>::])  <span class="hljs-comment"># : 截取全部字符</span><br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0b1111110010</p>
+<p>10 进制转 8进制  oct(int(n,10))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  789</p>
-<p>3、截取字符串中位置 为 奇数 的字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">1</span>::<span class="hljs-number">2</span>])  <span class="hljs-comment"># : 截取全部字符</span><br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0o1762</p>
+<p>10 进制转  16 进制 hex(int(n,10))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  13579</p>
-<p>4、截取字符串中位置 为 偶数 的字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[::<span class="hljs-number">2</span>])  <span class="hljs-comment">#不设置初始值 默认为0</span><br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0x3f2</p>
+<h4 id="4、十六进制转换为其他进制"><a href="#4、十六进制转换为其他进制" class="headerlink" title="4、十六进制转换为其他进制"></a>4、十六进制转换为其他进制</h4><p>16 进制转 2 进制  bin(int(n,16))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">16</span>)))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  02468</p>
-<p>5、将字符串倒序截取输出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;0123456789&quot;</span><br><span class="hljs-built_in">print</span>(a[::-<span class="hljs-number">1</span>]) <span class="hljs-comment">#截取全部字符串 步涨值为-1</span><br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0b1000000010000</p>
+<p>16 进制转  8 进制  oct(int(n,16))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">16</span>)))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  9876543210</p>
-<h3 id="六、字符串替换-replace"><a href="#六、字符串替换-replace" class="headerlink" title="六、字符串替换 replace()"></a>六、字符串替换 replace()</h3><p>说明：replace(要替换的字符串,替换后的字符串)</p>
-<p>把 a 字符串 中的 “HELLO” 替换为 “hello”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;HELLO world!&quot;</span><br><span class="hljs-built_in">print</span>(a.replace(<span class="hljs-string">&quot;HELLO&quot;</span>,<span class="hljs-string">&quot;hello&quot;</span>))<br><br></code></pre></td></tr></table></figure>
+<p><strong>&gt;&gt;&gt;</strong>  0o10020</p>
+<p>16 进制转  10  进制 int(n,16)</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">n</span> = <span class="hljs-string">&quot;1010&quot;</span><br>print(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">n</span>,<span class="hljs-number">16</span>))<br><br></code></pre></td></tr></table></figure>
 
-<p><strong>&gt;&gt;&gt;</strong>  hello world!</p>
-<h3 id="七、获取字符串的长度-len"><a href="#七、获取字符串的长度-len" class="headerlink" title="七、获取字符串的长度 len()"></a>七、获取字符串的长度 len()</h3><p>返回 a 字符串的长度</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;hello world!&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(a))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  12</p>
-<h3 id="八、使字符串居中显示-center"><a href="#八、使字符串居中显示-center" class="headerlink" title="八、使字符串居中显示   center()"></a>八、使字符串居中显示   center()</h3><p>说明：center(width,filechar)  </p>
-<p>width 字符串排版总宽   </p>
-<p>filechar 为填充字符</p>
-<p>1、将 “12321” 在 7个字符宽度里居中显示</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;12321&quot;</span><br><span class="hljs-built_in">print</span>(a.center(<span class="hljs-number">7</span>))<br><br></code></pre></td></tr></table></figure>
-
-<p> <strong>&gt;&gt;&gt;</strong>   12321 </p>
-<p>2、将 “12321” 在 7个字符宽度里居中显示,并用  *  填充</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;12321&quot;</span><br><span class="hljs-built_in">print</span>(a.center(<span class="hljs-number">7</span>,<span class="hljs-string">&quot;*&quot;</span>))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  *12321*</p>
-<h3 id="九、统计子字符串出现次数-count"><a href="#九、统计子字符串出现次数-count" class="headerlink" title="九、统计子字符串出现次数  count()"></a>九、统计子字符串出现次数  count()</h3><p>说明：count(sub,start=0,end(string))</p>
-<p>sub：搜索的子字符串 </p>
-<p>start：字符串搜索开始位置，默认为第一个位置</p>
-<p>end：字符串搜索结束位置，默认为最后一个位置</p>
-<p>1、统计字符串中 “ab” 出现的次数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abababcdababab&quot;</span><br><span class="hljs-built_in">print</span>(a.count(<span class="hljs-string">&quot;ab&quot;</span>))<br><br></code></pre></td></tr></table></figure>
-
-<p> <strong>&gt;&gt;&gt;</strong>  6</p>
-<p>2、统计字符串从位置为 3~9 之间中 “ab” 出现的次数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abababcdababab&quot;</span><br><span class="hljs-built_in">print</span>(a.count(<span class="hljs-string">&quot;ab&quot;</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  1</p>
-<h3 id="十、新字符串生成-join"><a href="#十、新字符串生成-join" class="headerlink" title="十、新字符串生成  join()"></a>十、新字符串生成  join()</h3><p>1、将一个字符串 在每个字符中间加入 -   返回一个新字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;abcdefg&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span>.join(a))<br><br></code></pre></td></tr></table></figure>
-
-<p>  <strong>&gt;&gt;&gt;</strong>  a-b-c-d-e-f-g</p>
-<p>2、将一个列表中的每个字符连接在一起输出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>.join(a))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  abc</p>
+<p><strong>&gt;&gt;&gt;</strong>  4112</p>
 ]]></content>
       <categories>
         <category>python</category>
       </categories>
       <tags>
-        <tag>字符串操作</tag>
+        <tag>进制转换</tag>
       </tags>
   </entry>
   <entry>
@@ -995,72 +1062,5 @@
       <categories>
         <category>python</category>
       </categories>
-  </entry>
-  <entry>
-    <title>python基础之编码与进制</title>
-    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/</url>
-    <content><![CDATA[<h3 id="一、Ascii-码转换-ord"><a href="#一、Ascii-码转换-ord" class="headerlink" title="一、Ascii 码转换   ord()"></a>一、Ascii 码转换   ord()</h3><p>将字符 a 转换为 Ascii码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&quot;a&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">ord</span>(a))<br></code></pre></td></tr></table></figure>
-
-<p> <strong>&gt;&gt;&gt;</strong>  97</p>
-<h3 id="二、Ascii-码转换为普通字符-chr"><a href="#二、Ascii-码转换为普通字符-chr" class="headerlink" title="二、Ascii 码转换为普通字符 chr()"></a>二、Ascii 码转换为普通字符 chr()</h3><p>将 ascii 码 97 转换为普通字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">97</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(a))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  a</p>
-<h3 id="三、进制转换"><a href="#三、进制转换" class="headerlink" title="三、进制转换"></a>三、进制转换</h3><h4 id="1、二-进制转换为其他进制"><a href="#1、二-进制转换为其他进制" class="headerlink" title="1、二 进制转换为其他进制"></a>1、二 进制转换为其他进制</h4><p>2  进制转  8  进制  oct(int(n,2))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>)))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0o12</p>
-<p>2  进制转 10 进制  int(n,2)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  10</p>
-<p>2  进制转 16 进制  hex(int(n,2))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">2</span>)))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0xa</p>
-<h4 id="2、八进制转换为其他进制"><a href="#2、八进制转换为其他进制" class="headerlink" title="2、八进制转换为其他进制"></a>2、八进制转换为其他进制</h4><p>8 进制转 2 进制  bin(int(n,8))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>)))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0b1000001000</p>
-<p>8 进制转 10 进制  int(n,8)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  520</p>
-<p>8 进制转 16 进制  hex(int(n,8))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">8</span>)))<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0x208</p>
-<h4 id="3、十进制转换为其他进制"><a href="#3、十进制转换为其他进制" class="headerlink" title="3、十进制转换为其他进制"></a>3、十进制转换为其他进制</h4><p>10 进制转 2 进制  bin(int(n,10))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0b1111110010</p>
-<p>10 进制转 8进制  oct(int(n,10))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0o1762</p>
-<p>10 进制转  16 进制 hex(int(n,10))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">10</span>)))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0x3f2</p>
-<h4 id="4、十六进制转换为其他进制"><a href="#4、十六进制转换为其他进制" class="headerlink" title="4、十六进制转换为其他进制"></a>4、十六进制转换为其他进制</h4><p>16 进制转 2 进制  bin(int(n,16))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">16</span>)))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0b1000000010000</p>
-<p>16 进制转  8 进制  oct(int(n,16))</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">n = <span class="hljs-string">&quot;1010&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-built_in">int</span>(n,<span class="hljs-number">16</span>)))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  0o10020</p>
-<p>16 进制转  10  进制 int(n,16)</p>
-<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">n</span> = <span class="hljs-string">&quot;1010&quot;</span><br>print(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">n</span>,<span class="hljs-number">16</span>))<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  4112</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>进制转换</tag>
-      </tags>
   </entry>
 </search>

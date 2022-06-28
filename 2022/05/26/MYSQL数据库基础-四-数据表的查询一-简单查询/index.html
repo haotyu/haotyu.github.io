@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="浩宇">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、简单查询1、查询student 数据表所有数据表：student 字段：* (所有) 条件：无 1select * from student;  2、查询student 表的 指定字段数据表：student 字段：sno (学号)、sname(姓名)、ssex(性别) 条件：无 1select sno,sname,ssex from student;  3、查询student 表的 指定字段数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL数据库基础(四) 简单查询">
+<meta property="og:url" content="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="浩宇的博客">
+<meta property="og:description" content="一、简单查询1、查询student 数据表所有数据表：student 字段：* (所有) 条件：无 1select * from student;  2、查询student 表的 指定字段数据表：student 字段：sno (学号)、sname(姓名)、ssex(性别) 条件：无 1select sno,sname,ssex from student;  3、查询student 表的 指定字段数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-26T06:48:46.000Z">
+<meta property="article:modified_time" content="2022-05-26T07:06:17.142Z">
+<meta property="article:author" content="浩宇">
+<meta property="article:tag" content="简单查询">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MYSQL数据库基础(四) 简单查询 - 浩宇的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MYSQL数据库基础(四) 简单查询"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-26 14:48" pubdate>
+          2022年5月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MYSQL数据库基础(四) 简单查询</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、简单查询"><a href="#一、简单查询" class="headerlink" title="一、简单查询"></a>一、简单查询</h3><h4 id="1、查询student-数据表所有数据"><a href="#1、查询student-数据表所有数据" class="headerlink" title="1、查询student 数据表所有数据"></a>1、查询student 数据表所有数据</h4><p>表：student</p>
+<p>字段：* (所有)</p>
+<p>条件：无</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查询student-表的-指定字段数据"><a href="#2、查询student-表的-指定字段数据" class="headerlink" title="2、查询student 表的 指定字段数据"></a>2、查询student 表的 指定字段数据</h4><p>表：student</p>
+<p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
+<p>条件：无</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> sno,sname,ssex <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、查询student-表的-指定字段数据-并改列名显示-as"><a href="#3、查询student-表的-指定字段数据-并改列名显示-as" class="headerlink" title="3、查询student 表的 指定字段数据   并改列名显示 (as)"></a>3、查询student 表的 指定字段数据   并改列名显示 (as)</h4><p>表：student</p>
+<p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
+<p>条件：[sno  改为  学号 ]、[sname  改为 姓名 ]、[ssex 改为 性别 ]</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> sno <span class="hljs-keyword">as</span> 学号,sname <span class="hljs-keyword">as</span> 姓名,ssex <span class="hljs-keyword">as</span> 性别 <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、查询sc-表-打折-数学运算"><a href="#4、查询sc-表-打折-数学运算" class="headerlink" title="4、查询sc 表  打折(数学运算)"></a>4、查询sc 表  打折(数学运算)</h4><p>表：sc</p>
+<p>字段：sno(学号)、degree(成绩)</p>
+<p>条件：成绩打八折</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">select</span> sno,degree*<span class="hljs-number">0</span>.<span class="hljs-number">8</span> from sc;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、查询student-表-指定条件-where"><a href="#5、查询student-表-指定条件-where" class="headerlink" title="5、查询student 表 指定条件(where)"></a>5、查询student 表 指定条件(where)</h4><p>表：student</p>
+<p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
+<p>条件：ssex 字段数据为 “男”</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> sno,sname,ssex <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> ssex = <span class="hljs-string">&quot;男&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="6、查询sc-表-取区间-between-and-、-not-between-and"><a href="#6、查询sc-表-取区间-between-and-、-not-between-and" class="headerlink" title="6、查询sc 表  取区间[(between  and)、(not between and)]"></a>6、查询sc 表  取区间[(between  and)、(not between and)]</h4><p>表：sc</p>
+<p>字段：* (所有)、degree(成绩)</p>
+<p>条件：只要查询 degree(成绩) 在80~90 的 所有数据(between  and)</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> degree <span class="hljs-keyword">between</span> <span class="hljs-number">80</span> <span class="hljs-keyword">and</span> <span class="hljs-number">90</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：只要查询 degree(成绩) 不在80~90 的 所有数据(not between and)</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> degree <span class="hljs-keyword">not</span> <span class="hljs-keyword">between</span> <span class="hljs-number">80</span> <span class="hljs-keyword">and</span> <span class="hljs-number">90</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="7、查询sc-表-取集合-in-、-not-in-、-or"><a href="#7、查询sc-表-取集合-in-、-not-in-、-or" class="headerlink" title="7、查询sc 表  取集合[(in)、(not in)、(or)]"></a>7、查询sc 表  取集合[(in)、(not in)、(or)]</h4><p>表：sc</p>
+<p>字段：* (所有)、degree(成绩)</p>
+<p>条件：只要查询 degree(成绩) 为 {92、85、90} 的数据(in)</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> degree <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">92</span>,<span class="hljs-number">85</span>,<span class="hljs-number">90</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：只要查询 degree(成绩) 不为 {92、85、90}的 数据(not in)</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> degree <span class="hljs-keyword">not</span> <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">92</span>,<span class="hljs-number">85</span>,<span class="hljs-number">90</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：只要查询 degree(成绩) 为 90 或 85 的 数据(in or)</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> degree <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">90</span></span>) <span class="hljs-keyword">or</span> degree <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">85</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="8、查询student-表-空值-null"><a href="#8、查询student-表-空值-null" class="headerlink" title="8、查询student 表  空值(null)"></a>8、查询student 表  空值(null)</h4><p>表：student</p>
+<p>字段：classno (班级号)</p>
+<p>条件：查看 classno 字段   为空值的行(is)</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> classno <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：查看 classno 字段   不为空值的行(not is)</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> classno <span class="hljs-keyword">is</span> not <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="9、查询student-表-只取-前两条-limit"><a href="#9、查询student-表-只取-前两条-limit" class="headerlink" title="9、查询student 表  只取 前两条(limit)"></a>9、查询student 表  只取 前两条(limit)</h4><p>表：student</p>
+<p>字段：* (所有)</p>
+<p>条件：只要查询到的 前两条</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">limit</span> <span class="hljs-number">2</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">limit</span> <span class="hljs-number">0</span>,<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、简单查询-模糊查询"><a href="#二、简单查询-模糊查询" class="headerlink" title="二、简单查询(模糊查询)"></a>二、简单查询(模糊查询)</h3><h4 id="1、查询student-表-查询姓刘的学生-like"><a href="#1、查询student-表-查询姓刘的学生-like" class="headerlink" title="1、查询student 表  查询姓刘的学生(like)"></a>1、查询student 表  查询姓刘的学生(like)</h4><ol>
+<li>模糊查询：escape “#”  把 “#”  用于转义字符的字符 </li>
+<li><pre><code class="hljs">                     --&gt; % 匹配任意多个字符 
+</code></pre>
+</li>
+<li><pre><code class="hljs">                     --&gt; _  匹配单个任意字符
+</code></pre>
+</li>
+</ol>
+<p>表：student</p>
+<p>字段：* (所有)、sname(姓名)、sdept(学院)</p>
+<p>条件：只要查询sname(姓名)   姓刘 的信息</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sname <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;刘%&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：只要查询sname(姓名)   姓刘   单名   的信息</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sname <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;刘_&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：只要查询sdept(学院) 为 “计算机_”  开始   的信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sdept <span class="hljs-keyword">like</span> &quot;计算机#_%&quot; <span class="hljs-keyword">escape</span> &quot;#&quot;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查询student-表-查询姓刘的学生-regexp"><a href="#2、查询student-表-查询姓刘的学生-regexp" class="headerlink" title="2、查询student 表  查询姓刘的学生(regexp)"></a>2、查询student 表  查询姓刘的学生(regexp)</h4><p>正则表达式：regexp   </p>
+<p>表：student</p>
+<p>字段：* (所有)、sname(姓名)、sdept(学院)</p>
+<p>条件：只要查询sdept(学院) 为 “计算机_”  开始   的信息</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> sdept regexp <span class="hljs-string">&quot;^计算机_.&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、简单查询-引入函数"><a href="#三、简单查询-引入函数" class="headerlink" title="三、简单查询 (引入函数)"></a>三、简单查询 (引入函数)</h3><h4 id="1、查询student-表-学生年龄-year-、current-date"><a href="#1、查询student-表-学生年龄-year-、current-date" class="headerlink" title="1、查询student 表  学生年龄 [ year()、current_date()]"></a>1、查询student 表  学生年龄 [ year()、current_date()]</h4><ol>
+<li>函数：1、year()  取出年份</li>
+<li><pre><code class="hljs">       2、current_date()  现在的日期
+</code></pre>
+</li>
+</ol>
+<p>表：student</p>
+<p>字段：sno (学号)、sname(姓名)、ssex(性别)、sbirthday(出生日期)</p>
+<p>条件：用函数处理 sbirthday 字段 ，拿到年龄</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas"><span class="hljs-keyword">select</span> sno <span class="hljs-keyword">as</span> 学号,sname <span class="hljs-keyword">as</span> 姓名,ssex <span class="hljs-keyword">as</span> 性别,<span class="hljs-meta">year</span>(current_<span class="hljs-meta">date</span>())-<span class="hljs-meta">year</span>(sbirthday) <span class="hljs-keyword">as</span> 年龄 <span class="hljs-keyword">from</span> student;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查询student-表-去重复-distinct"><a href="#2、查询student-表-去重复-distinct" class="headerlink" title="2、查询student 表  去重复 (distinct)"></a>2、查询student 表  去重复 (distinct)</h4><p>函数：1、distinct 去除重复值</p>
+<p>表：student</p>
+<p>字段：ssex(性别)、</p>
+<p>条件：用函数处理 ssex字段 ，拿到所拥有的性别</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">distinct</span>(<span class="hljs-params">ssex</span>) <span class="hljs-keyword">from</span> student</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、查询sc-表-数学函数、"><a href="#3、查询sc-表-数学函数、" class="headerlink" title="3、查询sc 表  数学函数、"></a>3、查询sc 表  数学函数、</h4><ol>
+<li>函数： 1、max() 提取最大值</li>
+<li><pre><code class="hljs">        2、min() 最小值
+</code></pre>
+</li>
+<li><pre><code class="hljs">        3、avg() 平均值
+</code></pre>
+</li>
+<li><pre><code class="hljs">        4、count() 统计行数
+</code></pre>
+</li>
+</ol>
+<p>表：sc</p>
+<p>字段：degree(成绩) </p>
+<p>条件：查询degree 最大值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">max</span>(<span class="hljs-params">degree</span>) <span class="hljs-keyword">from</span> sc</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：查询degree 最小值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">min</span>(<span class="hljs-params">degree</span>) <span class="hljs-keyword">from</span> sc</span>;<br></code></pre></td></tr></table></figure>
+
+<p>条件：查询degree 平均值</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> <span class="hljs-keyword">avg</span>(degree) <span class="hljs-keyword">from</span> sc;<br></code></pre></td></tr></table></figure>
+
+<p>条件：查询degree 总行数</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(degree) <span class="hljs-keyword">from</span> sc;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">#简单查询</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MYSQL数据库基础(四) 简单查询</div>
+      <div>http://example.com/2022/05/26/MYSQL数据库基础-四-数据表的查询一-简单查询/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>浩宇</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/" title="MYSQL数据库基础(五) 多表链接查询">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MYSQL数据库基础(五) 多表链接查询</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" title="MYSQL数据库基础(三) 数据数据增、删、改">
+                        <span class="hidden-mobile">MYSQL数据库基础(三) 数据数据增、删、改</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

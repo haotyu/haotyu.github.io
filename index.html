@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="浩宇">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="浩宇的博客">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="浩宇的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="浩宇">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>浩宇的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="每天争取努力一点点"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" target="_self">
+          python基础之字符串操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
+          一、统一英文大小写1、统一英文大写  upper() 12a &#x3D; &quot;ABcDefg&quot;print(a.upper())  &gt;&gt;&gt;  ABCDEFG 2、统一英文小写  lower() 12a &#x3D; &quot;ABcDefg&quot;print(a.lower())  &gt;&gt;&gt;  abcdefg 二、去除字符串首尾空格1、去除字符串开头空格  l
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-28 20:44" pubdate>
+              2022-06-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">#字符串操作</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/" target="_self">
+          python基础之编码与进制
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/" target="_self">
+        <div>
+          一、Ascii 码转换   ord()将字符 a 转换为 Ascii码 12a &#x3D; &quot;a&quot;print(ord(a))   &gt;&gt;&gt;  97 二、Ascii 码转换为普通字符 chr()将 ascii 码 97 转换为普通字符 12a &#x3D; 97print(chr(a))  &gt;&gt;&gt;  a 三、进制转换1、二 进制转换为其他进制2  进制转  8
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-28 20:42" pubdate>
+              2022-06-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/">#进制转换</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
+          python基础之常用数据结构
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
+        <div>
+          一、列表list（有序）增、删、改、查1、在列表增加元素  append()​      创建一个空列表，增加元素 name 、age 1234a &#x3D; []a.append(&quot;name&quot;)a.append(&quot;age&quot;)print(a)  &gt;&gt;&gt;  [‘name’, ‘age’] ​        在 a 列表中指定位置 1 插入  sex
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-28 20:40" pubdate>
+              2022-06-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AB-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%86%E5%9B%BE/" target="_self">
+          MYSQL数据库基础(八) 数据库视图
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AB-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%86%E5%9B%BE/" target="_self">
+        <div>
+          一、视图介绍理解：视图就像一个窗口，每个人在自己家里的窗口往外看，看到的风景是不一样的 视图就是给表开一个窗口，让每个人(角色)看到的风景不一样(数据)  窗口 (视图) 原本是没有风景(数据)的，它只是建立在风景(数据表)之上 二、创建视图(view)1、单表创建视图要求：给student表,建立视图(stud)，并且视图只有student表的sno、sname、ssex列， 1create v
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:55" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%A7%86%E5%9B%BE/">#视图</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%83-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%9B%9B-%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/" target="_self">
+          MYSQL数据库基础(七) 聚集函数查询
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%83-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%9B%9B-%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/" target="_self">
+        <div>
+          一、按某列   升   降   排序(order by)1、按升序排序(asc)说明：系统默认按升序排序 表：sc 字段： * (所有)  degree(成绩) 要求：查询sc 并 让 degree 按升序输出 1select * from sc order by degree asc;  1select * from sc order by degree;  两个或多个字段 用逗号隔开 1sel
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:53" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/">#聚集函数查询</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" target="_self">
+          MYSQL数据库基础(六) 嵌套查询
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" target="_self">
+        <div>
+          一、嵌套查询(in)表：student 、sc 字段：cno 、degree sname 作用：从student表查询到的结果当sc 表的查询条件的一部分 要求：查询 “小明” 同学所选的 cno 和degree 。   1select cno,degree from sc where sno in (select sno from student where sname &#x3D; &quot;小明&amp;q
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:51" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/">#嵌套查询</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/" target="_self">
+          MYSQL数据库基础(五) 多表链接查询
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/" target="_self">
+        <div>
+          一、笛卡尔积   连接查询表：student 、 sc 字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段) 要求：student 和 sc 表用笛卡尔积进行连接查询 1select student.*,sc.* from student,sc;  二、内连接查询(inner join   on)表：student 、 sc 字段：student.* (st
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:50" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5/">#多表链接</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/" target="_self">
+          MYSQL数据库基础(四) 简单查询
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/" target="_self">
+        <div>
+          一、简单查询1、查询student 数据表所有数据表：student 字段：* (所有) 条件：无 1select * from student;  2、查询student 表的 指定字段数据表：student 字段：sno (学号)、sname(姓名)、ssex(性别) 条件：无 1select sno,sname,ssex from student;  3、查询student 表的 指定字段数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:48" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">#简单查询</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" target="_self">
+          MYSQL数据库基础(三) 数据数据增、删、改
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" target="_self">
+        <div>
+          一、 向数据表插入数据(insert into)表：teaching数据：C01    101 | C02    102字段：cno    tno 1insert into teaching(cno,tno) values(&quot;C01&quot;,&quot;101&quot;),(&quot;C01&quot;,&quot;102&quot;); 在添加的数据填满表字段时，可省掉字段,
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:46" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%A8/">#数据表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/" target="_self">
+          MYSQL数据库基础(二) 数据表结构操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
+          一、创建数据表1.创建数据表并设置主键数据表：xiaoyudi_tbl字段：name age数据类型和范围：varchar(20)   int设置不允许为空值：not null设置主键：primary key 1create table xiaoyudi_tbl(name varchar(20) not null primary key,age int); 2.创建数据表并设置字符集设置字符集为u
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-26 14:43" pubdate>
+              2022-05-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%A8/">#数据表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

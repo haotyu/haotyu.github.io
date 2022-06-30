@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="浩宇">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="说明：其实不用缩进的,我这是为了好看。 一、变量1、系统变量 @@变量名 查看当前系统版本和时间 1select @@variables as &quot;当前版本为&quot;,current_date();  2、用户变量 @变量名 定义一个用户变量 num 赋值为 100 123456set @num &#x3D; 100;  -- 方法一set @num :&#x3D; 100; --  方法二select">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL数据库基础(十)SQL编程基础">
+<meta property="og:url" content="http://example.com/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%8D%81-SQL%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="浩宇的博客">
+<meta property="og:description" content="说明：其实不用缩进的,我这是为了好看。 一、变量1、系统变量 @@变量名 查看当前系统版本和时间 1select @@variables as &quot;当前版本为&quot;,current_date();  2、用户变量 @变量名 定义一个用户变量 num 赋值为 100 123456set @num &#x3D; 100;  -- 方法一set @num :&#x3D; 100; --  方法二select">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-30T16:12:09.000Z">
+<meta property="article:modified_time" content="2022-06-30T16:14:21.168Z">
+<meta property="article:author" content="浩宇">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MYSQL数据库基础(十)SQL编程基础 - 浩宇的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MYSQL数据库基础(十)SQL编程基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-01 00:12" pubdate>
+          2022年7月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MYSQL数据库基础(十)SQL编程基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>说明：其实不用缩进的,我这是为了好看。</p>
+<h3 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h3><p>1、系统变量 @@变量名</p>
+<p>查看当前系统版本和时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select @@variables as &quot;当前版本为&quot;,current_date();<br></code></pre></td></tr></table></figure>
+
+<p>2、用户变量 @变量名</p>
+<p>定义一个用户变量 num 赋值为 100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @num = 100;  -- 方法一<br>set @num := 100; --  方法二<br>select @num := 100; -- 方法三<br>select 100 into @num;  -- 方法四<br>select a into @num from table_name where id = 1; -- 方法五 字段 id = 1的 a 字段的值为 100<br>select @num; -- 查看变量值<br></code></pre></td></tr></table></figure>
+
+<p>3、常量 即：不会变量</p>
+<p>4、局部变量  在 begin .. end 之间定义的变量</p>
+<h3 id="二、存储过程-procedure"><a href="#二、存储过程-procedure" class="headerlink" title="二、存储过程  procedure"></a>二、存储过程  procedure</h3><p>declare ：用于声明变量</p>
+<p>default ：用于设置默认值</p>
+<p>call ：用于使用存储过程</p>
+<h4 id="1、创建存储过程"><a href="#1、创建存储过程" class="headerlink" title="1、创建存储过程"></a>1、创建存储过程</h4><p>不传参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create procedure proc_1()  -- 创建一个名为proc_1存储过程<br>begin -- 开始 类似java 的&#123;<br>  declare a int default 1; -- 声明一个局部变量 a 默认值为 1 <br>  select * from test where id = a;  -- 查询表test 字段id = 1 的信息<br>end; -- 结束 类似java 的 &#125;<br><br>call proc_1; -- 使用存储过程<br></code></pre></td></tr></table></figure>
+
+<p>带传入参数 in </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create procedure proc_2(in a int)  -- in a int 声明一个输入整型参数 a <br>begin <br>  select * from test where id = a;<br>end;<br><br>call proc_2(1); -- 使用存储过程输入参数 1<br></code></pre></td></tr></table></figure>
+
+<p>带传入 in 参数和 带出 参数 out  </p>
+<p>输出的参数用来带出处理后得到的数据，并且输出参数要为用户变量即：@变量名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create procedure proc_3(in a int,out b varchar(10))  -- out 接收输出参数的变量 b<br>begin<br>  select sname into b from test where id = a;  -- 将 name 值 赋给 b<br>end;<br><br>call proc_3(1,@name);  -- 声明用户变量 @name 用来接收输出值<br>select @name; -- 查看变量值<br></code></pre></td></tr></table></figure>
+
+<p> 传入参数  inout</p>
+<p>用于从外部传入变量到存储过程后，经过修改后返回修改后的值赋给传入的变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create procedure proc(inout a int)<br>begin<br>  set a = 100;  -- 给a 赋值为 100<br>end;<br>call proc_4(@b);<br>select @b;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查看存储过程"><a href="#2、查看存储过程" class="headerlink" title="2、查看存储过程"></a>2、查看存储过程</h4><p>查看 proc_1 的定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create procedure proc_1;<br></code></pre></td></tr></table></figure>
+
+<p>显示所有存储过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show procedure status;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、删除存储过程"><a href="#3、删除存储过程" class="headerlink" title="3、删除存储过程"></a>3、删除存储过程</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop procedure proc_3;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="三、函数-function"><a href="#三、函数-function" class="headerlink" title="三、函数  function"></a>三、函数  function</h3><h4 id="1、创建函数"><a href="#1、创建函数" class="headerlink" title="1、创建函数"></a>1、创建函数</h4><p>function ：函数关键字</p>
+<p>returns : 用于声名函数返回值的类型，这行不用分号结束</p>
+<p>不带出传入参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询 id = 1 的学生姓名<br>create function func_1()<br>returns varchar(10) -- 声明返回值的类型为 变长字符串型并且长度为 10<br>begin<br>  declare a varchar(10) default &quot;&quot;; -- 声明一个变长字符串型的 a 局部变量<br>  select sname into a from test where id = 1; <br>  return a; -- 返回 a 的值<br>end;<br><br>select func_1(); -- 使用自定义函数<br><br></code></pre></td></tr></table></figure>
+
+<p>带传入参数 ：传参</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 两数相加<br>create function func_2(a int,b int) -- 传入两个整型参数 a,b<br>returns int <br>begin<br>  declare c int;<br>  set c = a + b;  -- 两数相加并赋值给 c<br>  return c;<br>end;<br><br>select func_2(1,2) -- 填入参数 1,2 <br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查看所有函数"><a href="#2、查看所有函数" class="headerlink" title="2、查看所有函数"></a>2、查看所有函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show function status;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、删除函数"><a href="#3、删除函数" class="headerlink" title="3、删除函数"></a>3、删除函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop function func_3; -- func_3 为函数名<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="四、触发器-trigger"><a href="#四、触发器-trigger" class="headerlink" title="四、触发器  trigger"></a>四、触发器  trigger</h3><p>触发器（trigger）是SQL server 提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件来触发，比如当对一个表进行操作（ insert，delete， update）时就会激活它执行。触发器经常用于加强数据的完整性约束和业务规则等。 触发器可以从 DBA_TRIGGERS ，USER_TRIGGERS 数据字典中查到。SQL3的触发器是一个能由系统自动执行对数据库修改的语句。</p>
+<p>触发器可以查询其他表，而且可以包含复杂的SQL语句。它们主要用于强制服从复杂的业务规则或要求。例如：您可以根据客户当前的帐户状态，控制是否允许插入新订单。</p>
+<p>触发器也可用于强制引用完整性，以便在多个表中添加、更新或删除行时，保留在这些表之间所定义的关系。然而，强制引用完整性的最好方法是在相关表中定义主键和外键约束。如果使用数据库关系图，则可以在表之间创建关系以自动创建外键约束。</p>
+<p>触发器与存储过程的唯一区别是触发器不能执行EXECUTE语句调用，而是在用户执行Transact-SQL语句时自动触发执行。</p>
+<p>此外触发器是逻辑电路的基本单元电路，具有记忆功能，可用于二进制数据储存，记忆信息等。</p>
+<p><strong>语法</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create trigger 触发器名称 [触发时机(before|after)] [触发动作(update|insert|delete)] on [数据表名] for each row<br>begin<br>  [触发后执行的事件]<br>end;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1、设置插入时触发器"><a href="#1、设置插入时触发器" class="headerlink" title="1、设置插入时触发器"></a>1、设置插入时触发器</h4><p>为 test 表 设置插入时的触发器，当test 表每次新插入一条记录时统计一下记录的总数并赋值给 @count_1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create trigger trig_1 after insert on test for each row<br>begin<br>  select count(*) into @count_1 from test;<br>end;<br>insert into test values(&quot;小刚&quot;,&quot;男&quot;,2); -- 插入一条记录，用于触发触发器<br>select @count_1; -- 查看用户变量 @count_1 的值<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、设置删除时触发器"><a href="#2、设置删除时触发器" class="headerlink" title="2、设置删除时触发器"></a>2、设置删除时触发器</h4><p>为 test 表 设置删除时的触发器，当test 表每次删除一条记录时统计一下记录的总数并赋值给 @count_2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create trigger trig_2 after delete on test for each row<br>begin<br>  select count(*) into @count_2 from test;<br>end;<br>delete from test where id = 2; -- 删除一条记录，用于触发触发器<br>select @count_2;  -- 查看用户变量 @count_2 的值<br><br></code></pre></td></tr></table></figure>
+
+<p>3、设置修改时触发器</p>
+<p>为 test 表 设置删除时的触发器，当test 表每次修改一条记录时统计一下记录的总数并赋值给 @count_3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create trigger trig_3 after update on test for each row<br>begin<br>  select count(*) into @count_3 from test;<br>end;<br>update test set sname = &quot;小刚&quot; where id = 1;  -- 更新一条记录，用于触发触发器<br>select @count_3;  -- 查看用户变量 @count_3 的值<br><br></code></pre></td></tr></table></figure>
+
+<p>4、查看指定触发器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create trigger trig_1;  -- trig_1 为触发器名称<br><br></code></pre></td></tr></table></figure>
+
+<p>5、查看所有的触发器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show triggers;<br><br></code></pre></td></tr></table></figure>
+
+<p>6、删除触发器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop trigger trig_3;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="五、流程控制"><a href="#五、流程控制" class="headerlink" title="五、流程控制"></a>五、流程控制</h3><p>流程控制可以用于，函数、存储过程、触发器等，这里我都用函数来举例。</p>
+<h4 id="1、if-判断语句"><a href="#1、if-判断语句" class="headerlink" title="1、if  判断语句"></a>1、if  判断语句</h4><p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">if 表达式 then<br>  执行体;<br>elseif 表达式 then<br>  执行体;<br>else <br>  执行体;<br>end if;<br><br></code></pre></td></tr></table></figure>
+
+<p>创建一个函数max_min ，可以接收两个参数并返回两数之间的大小关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create function max_min(a int,b int)<br>returns varchar(30)<br>begin<br>  if a &gt; b then  -- 需要 then 然后开始要执行的语句<br>    return concat(a,&quot;大于&quot;,b);<br>  elseif a = b then<br>    return concat(a,&quot;等于&quot;,b);<br>  else  -- 这个不需要then <br>    return concat(a,&quot;小于&quot;,b);<br>  end if;  -- 结束if 语句<br>end;<br>select max_min(1,2),max_min(2,2),max_min(3,2);  -- 验证一下<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、case-语句"><a href="#2、case-语句" class="headerlink" title="2、case 语句"></a>2、case 语句</h4><p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">case 表达式    /*方法一*/     case         /* 方法二*/<br>when 值 then                 when 表达式 then <br>  执行体;                      执行体;<br>when 值 then                 when 表达式 then <br>  执行体;                      执行体;<br>else                         else<br>  执行体;                      执行体;<br>end case;                    end case;<br><br></code></pre></td></tr></table></figure>
+
+<p>创建一个函数max_min_case ，可以接收两个参数并返回两数之间的大小关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 这里用了方法二<br>create function max_min_case(a int,b int)<br>returns varchar(30)<br>begin<br>  case<br>  when a &gt; b then<br>    return concat(a,&quot;大于&quot;,b);<br>  when a = b then<br>    return concat(a,&quot;等于&quot;,b);<br>  else<br>    return concat(a,&quot;小于&quot;,b);<br>  end case;<br>end;<br>select max_min_case(1,2),max_min_case(2,2),max_min_case(3,2);  -- 验证一下<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、while-循化语句"><a href="#3、while-循化语句" class="headerlink" title="3、while 循化语句"></a>3、while 循化语句</h4><p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">while 表达式 do<br>  执行体;<br>end while;<br><br></code></pre></td></tr></table></figure>
+
+<p>创建一个函数 func_while ，实现 1+3+5+…+99 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create function func_while()<br>returns int<br>begin<br>  declare num int default 1;<br>  declare n int default 3;<br>  while n &lt; 100 do   <br>    set num = num + n;  -- 要用 set 来创建每一次的赋值<br>    set n = n + 2;<br>  end while;<br>return num;  -- 返回num 值<br>end;<br>select func_while();  -- 使用一下<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="4、repeat-循环语句"><a href="#4、repeat-循环语句" class="headerlink" title="4、repeat 循环语句"></a>4、repeat 循环语句</h4><p>repeat 循化 类似于 java 里的 do{ }while() ,就是先执行一个，再去判断 until 条件，当 until 条件为真时结束循化，条件为假时，继续循环。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">repeat<br>  执行体;<br>  until 条件; <br>end repeat;<br><br></code></pre></td></tr></table></figure>
+
+<p>创建一个函数 func_repeat ，实现 2+4+6+…100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create function func_repeat()<br>returns int<br>begin<br>  declare num int default 2;<br>  declare n int default 4;<br>  repeat<br>    set num = num + n;<br>    set n = n + 2;<br>    until n &gt; 100  -- 这里不用 ;<br>  end repeat;<br>return num;<br>end;<br>select func_repeat() -- 使用验证一下<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="5、loop-循环语句"><a href="#5、loop-循环语句" class="headerlink" title="5、loop 循环语句"></a>5、loop 循环语句</h4><p>扩展知识</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">leave ：类似与 python 的 <span class="hljs-keyword">break</span>,即：结束循环<br>iterate : 类似 python 的 <span class="hljs-keyword">continue</span> 即：结束<span class="hljs-keyword">continue</span> 后的循环体后继续重新循环<br><br></code></pre></td></tr></table></figure>
+
+<p>loop 没有内置循环条件，即：没有结束循环的条件，但可以用 leave 来结束循环。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">startloop:loop  -- startloop 是自定义的一个词，用来做标志的<br>  循环体;<br>  if 表达式 then<br>    levae startloop;  -- 自定义的结束循环<br>  end if;<br>end loop;<br><br></code></pre></td></tr></table></figure>
+
+<p> 创建一个函数 func_loop ，实现 1+3+5+…+99 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create function func_loop()<br>returns int<br>begin<br>  declare num int default 1;<br>  declare n int default 3;<br>  startloop:loop<br>    set num = num + n;<br>    set n = n + 2;<br>    if n &gt; 100 then<br>      leave startloop;<br>  end if;<br>  end loop;<br>return num;<br>end;<br>select func_loop(); -- 使用验证一下<br><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MYSQL数据库基础(十)SQL编程基础</div>
+      <div>http://example.com/2022/07/01/MYSQL数据库基础-十-SQL编程基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>浩宇</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" title="python基础之字符串操作">
+                        <span class="hidden-mobile">python基础之字符串操作</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

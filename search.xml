@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MYSQL数据库基础(一) 创建数据库</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></table></figure>
+<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database xiaoyudi character set utf8 collate utf8_general_ci;<br>create database xiaoyudi character set gbk collate gbk_chinese_ci;<br></code></pre></td></tr></table></figure>
+<h5 id="3、查看当前使用的数据库"><a href="#3、查看当前使用的数据库" class="headerlink" title="3、查看当前使用的数据库"></a>3、查看当前使用的数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></table></figure>
+<h3 id="二、查看数据库信息"><a href="#二、查看数据库信息" class="headerlink" title="二、查看数据库信息"></a>二、查看数据库信息</h3><h5 id="1、查看数据库所支持存储引擎"><a href="#1、查看数据库所支持存储引擎" class="headerlink" title="1、查看数据库所支持存储引擎"></a>1、查看数据库所支持存储引擎</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show engines;<br></code></pre></td></tr></table></figure>
+<h5 id="2-查看数据库所支持的字符集"><a href="#2-查看数据库所支持的字符集" class="headerlink" title="2.查看数据库所支持的字符集"></a>2.查看数据库所支持的字符集</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%character%&quot;;<br></code></pre></td></tr></table></figure>
+<h5 id="3、查看数据库所支持的编码规则"><a href="#3、查看数据库所支持的编码规则" class="headerlink" title="3、查看数据库所支持的编码规则"></a>3、查看数据库所支持的编码规则</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%collation%&quot;;<br></code></pre></td></tr></table></figure>
+<h3 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h3><h5 id="1、使用数据库"><a href="#1、使用数据库" class="headerlink" title="1、使用数据库"></a>1、使用数据库</h5><p>数据库：xiaoyudi</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">use xiaoyudi<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<h5 id="2、删除数据表"><a href="#2、删除数据表" class="headerlink" title="2、删除数据表"></a>2、删除数据表</h5><p><em><strong>数据表</strong></em>：xiaoyudi1_tbl</p>
+<figure class="highlight pf"><table><tr><td class="code"><pre><code class="hljs pf"><span class="hljs-keyword">drop</span> <span class="hljs-built_in">table</span> xiaoyudi1_tbl;<br></code></pre></td></tr></table></figure>
+<h5 id="3、编码规则和字符集在创建数据库时设置可以继承给数据表"><a href="#3、编码规则和字符集在创建数据库时设置可以继承给数据表" class="headerlink" title="3、编码规则和字符集在创建数据库时设置可以继承给数据表"></a>3、编码规则和字符集在创建数据库时设置可以继承给数据表</h5>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>创建数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MYSQL数据库基础(七) 聚集函数查询</title>
     <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%83-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%9B%9B-%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<h3 id="一、按某列-升-降-排序-order-by"><a href="#一、按某列-升-降-排序-order-by" class="headerlink" title="一、按某列   升   降   排序(order by)"></a>一、按某列   升   降   排序(order by)</h3><h4 id="1、按升序排序-asc"><a href="#1、按升序排序-asc" class="headerlink" title="1、按升序排序(asc)"></a>1、按升序排序(asc)</h4><p>说明：系统默认按升序排序</p>
@@ -39,28 +61,6 @@
       </categories>
       <tags>
         <tag>聚集函数查询</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL数据库基础(一) 创建数据库</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></table></figure>
-<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">create database xiaoyudi character set utf8 collate utf8_general_ci;<br>create database xiaoyudi character set gbk collate gbk_chinese_ci;<br></code></pre></td></tr></table></figure>
-<h5 id="3、查看当前使用的数据库"><a href="#3、查看当前使用的数据库" class="headerlink" title="3、查看当前使用的数据库"></a>3、查看当前使用的数据库</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></table></figure>
-<h3 id="二、查看数据库信息"><a href="#二、查看数据库信息" class="headerlink" title="二、查看数据库信息"></a>二、查看数据库信息</h3><h5 id="1、查看数据库所支持存储引擎"><a href="#1、查看数据库所支持存储引擎" class="headerlink" title="1、查看数据库所支持存储引擎"></a>1、查看数据库所支持存储引擎</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show engines;<br></code></pre></td></tr></table></figure>
-<h5 id="2-查看数据库所支持的字符集"><a href="#2-查看数据库所支持的字符集" class="headerlink" title="2.查看数据库所支持的字符集"></a>2.查看数据库所支持的字符集</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%character%&quot;;<br></code></pre></td></tr></table></figure>
-<h5 id="3、查看数据库所支持的编码规则"><a href="#3、查看数据库所支持的编码规则" class="headerlink" title="3、查看数据库所支持的编码规则"></a>3、查看数据库所支持的编码规则</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">show variables like &quot;%collation%&quot;;<br></code></pre></td></tr></table></figure>
-<h3 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h3><h5 id="1、使用数据库"><a href="#1、使用数据库" class="headerlink" title="1、使用数据库"></a>1、使用数据库</h5><p>数据库：xiaoyudi</p>
-<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf">use xiaoyudi<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-<h5 id="2、删除数据表"><a href="#2、删除数据表" class="headerlink" title="2、删除数据表"></a>2、删除数据表</h5><p><em><strong>数据表</strong></em>：xiaoyudi1_tbl</p>
-<figure class="highlight pf"><table><tr><td class="code"><pre><code class="hljs pf"><span class="hljs-keyword">drop</span> <span class="hljs-built_in">table</span> xiaoyudi1_tbl;<br></code></pre></td></tr></table></figure>
-<h5 id="3、编码规则和字符集在创建数据库时设置可以继承给数据表"><a href="#3、编码规则和字符集在创建数据库时设置可以继承给数据表" class="headerlink" title="3、编码规则和字符集在创建数据库时设置可以继承给数据表"></a>3、编码规则和字符集在创建数据库时设置可以继承给数据表</h5>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>创建数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -154,6 +154,42 @@
       </tags>
   </entry>
   <entry>
+    <title>MYSQL数据库基础(五) 多表链接查询</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h3 id="一、笛卡尔积-连接查询"><a href="#一、笛卡尔积-连接查询" class="headerlink" title="一、笛卡尔积   连接查询"></a>一、笛卡尔积   连接查询</h3><p>表：student 、 sc</p>
+<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
+<p>要求：student 和 sc 表用笛卡尔积进行连接查询</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">select</span> <span class="hljs-regexp">student.*</span>,<span class="hljs-regexp">sc.*</span> from student,sc;<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、内连接查询-inner-join-on"><a href="#二、内连接查询-inner-join-on" class="headerlink" title="二、内连接查询(inner join   on)"></a>二、内连接查询(inner join   on)</h3><p>表：student 、 sc</p>
+<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
+<p>要求：student 和 sc 表用内连接进行查询</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、左连接查询-left-join-on"><a href="#三、左连接查询-left-join-on" class="headerlink" title="三、左连接查询(left  join on)"></a>三、左连接查询(left  join on)</h3><p>表：student 、 sc</p>
+<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
+<p>要求：student 和 sc 表用左连接进行查询</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
+
+<h3 id="四、右连接查询-rigth-join-on"><a href="#四、右连接查询-rigth-join-on" class="headerlink" title="四、右连接查询(rigth join on)"></a>四、右连接查询(rigth join on)</h3><p>表：student 、 sc</p>
+<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
+<p>要求：student 和 sc 表用右连接进行查询</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">right</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
+
+<h3 id="五、内连接查询-inner-join-on"><a href="#五、内连接查询-inner-join-on" class="headerlink" title="五、内连接查询(inner join on)"></a>五、内连接查询(inner join on)</h3><p>表：student a  (student 取名为a)</p>
+<p>字段：student.* (student 表的所有字段)  a.sno (a表的sno字段)</p>
+<p>要求：student表用内连接进行查询</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student a <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> student b <span class="hljs-keyword">on</span> a.sno=b.sno;<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>多表链接</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MYSQL数据库基础(八) 数据库视图</title>
     <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AB-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%86%E5%9B%BE/</url>
     <content><![CDATA[<h3 id="一、视图介绍"><a href="#一、视图介绍" class="headerlink" title="一、视图介绍"></a>一、视图介绍</h3><p>理解：视图就像一个窗口，每个人在自己家里的窗口往外看，看到的风景是不一样的</p>
@@ -198,42 +234,6 @@
       </categories>
       <tags>
         <tag>视图</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL数据库基础(五) 多表链接查询</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h3 id="一、笛卡尔积-连接查询"><a href="#一、笛卡尔积-连接查询" class="headerlink" title="一、笛卡尔积   连接查询"></a>一、笛卡尔积   连接查询</h3><p>表：student 、 sc</p>
-<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
-<p>要求：student 和 sc 表用笛卡尔积进行连接查询</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">select</span> <span class="hljs-regexp">student.*</span>,<span class="hljs-regexp">sc.*</span> from student,sc;<br></code></pre></td></tr></table></figure>
-
-<h3 id="二、内连接查询-inner-join-on"><a href="#二、内连接查询-inner-join-on" class="headerlink" title="二、内连接查询(inner join   on)"></a>二、内连接查询(inner join   on)</h3><p>表：student 、 sc</p>
-<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
-<p>要求：student 和 sc 表用内连接进行查询</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
-
-<h3 id="三、左连接查询-left-join-on"><a href="#三、左连接查询-left-join-on" class="headerlink" title="三、左连接查询(left  join on)"></a>三、左连接查询(left  join on)</h3><p>表：student 、 sc</p>
-<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
-<p>要求：student 和 sc 表用左连接进行查询</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
-
-<h3 id="四、右连接查询-rigth-join-on"><a href="#四、右连接查询-rigth-join-on" class="headerlink" title="四、右连接查询(rigth join on)"></a>四、右连接查询(rigth join on)</h3><p>表：student 、 sc</p>
-<p>字段：student.* (student 表的所有字段)   sc.*(sc表的所有字段)</p>
-<p>要求：student 和 sc 表用右连接进行查询</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> student.*,sc.* <span class="hljs-keyword">from</span> student <span class="hljs-keyword">right</span> <span class="hljs-keyword">join</span> sc <span class="hljs-keyword">on</span> student.sno=sc.sno;<br></code></pre></td></tr></table></figure>
-
-<h3 id="五、内连接查询-inner-join-on"><a href="#五、内连接查询-inner-join-on" class="headerlink" title="五、内连接查询(inner join on)"></a>五、内连接查询(inner join on)</h3><p>表：student a  (student 取名为a)</p>
-<p>字段：student.* (student 表的所有字段)  a.sno (a表的sno字段)</p>
-<p>要求：student表用内连接进行查询</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student a <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> student b <span class="hljs-keyword">on</span> a.sno=b.sno;<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>多表链接</tag>
       </tags>
   </entry>
   <entry>
@@ -390,6 +390,22 @@
       <tags>
         <tag>编程</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>SQL注入</title>
+    <url>/2022/07/14/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8e9c3978a8c45679d35adaf8bfd5951ce0857802ff452d629161d87c455bc113">905c4d0cf8e39f3f4fbbf98d9acd6e65891e22ae193e874c7a43b58a996907d95647469aca533f8017855a45a47250b7</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">努力学习</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>MYSQL数据库基础(四) 简单查询</title>
@@ -629,6 +645,111 @@
       </categories>
       <tags>
         <tag>字符串操作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python基础之常用数据结构</title>
+    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = []<br>a.append(<span class="hljs-string">&quot;name&quot;</span>)<br>a.append(<span class="hljs-string">&quot;age&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘age’]</p>
+<p>​        在 a 列表中指定位置 1 插入  sex <strong>insert()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>]<br>a.insert(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’, ‘age’]</p>
+<h4 id="2、删除-元素pop"><a href="#2、删除-元素pop" class="headerlink" title="2、删除 元素pop()"></a>2、删除 元素<strong>pop()</strong></h4><p>1、列表 a 第一个元素和最后一个元素 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br>a.pop(<span class="hljs-number">0</span>)<br>a.pop()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘age’]</p>
+<p>2、删除列表中索引为 1 的元素 <strong>del list[index]</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-keyword">del</span> a[<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’]</p>
+<h4 id="3、修改元素"><a href="#3、修改元素" class="headerlink" title="3、修改元素"></a>3、修改元素</h4><p>1、把列表 a 中 第一个位置元素改为 “sno” </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br>a[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;sno&quot;</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sno’, ‘sex’]</p>
+<h4 id="4、查询-a-列表的元素-list-index"><a href="#4、查询-a-列表的元素-list-index" class="headerlink" title="4、查询 a 列表的元素 list[index]"></a>4、查询 a 列表的元素 <strong>list[index]</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name</p>
+<p>​      遍历列表 a 所有元素 <strong>for in</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>    <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
+<h3 id="二、元组-tuple-有序-查、解包"><a href="#二、元组-tuple-有序-查、解包" class="headerlink" title="二、元组  tuple  (有序 )  查、解包"></a>二、元组  tuple  (有序 )  查、解包</h3><p><strong>元组元素不可改变</strong></p>
+<h4 id="1、创建元组"><a href="#1、创建元组" class="headerlink" title="1、创建元组"></a>1、创建元组</h4><p>创建一个元组，并写入 name、age、sex</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,sex)<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、查询元组"><a href="#2、查询元组" class="headerlink" title="2、查询元组"></a>2、查询元组</h4><p>1、查询元组 a 和只查询 第一个元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  (‘name’, ‘age’, ‘sex’)<br><strong>&gt;&gt;&gt;</strong>  name</p>
+<p>2、遍历所有元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
+<h4 id="3、元组解包"><a href="#3、元组解包" class="headerlink" title="3、元组解包"></a>3、元组解包</h4><p>把元组 a 解包</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br>b,c,d = a<br><span class="hljs-built_in">print</span>(b,c,d)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name age sex</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br>b,*c = a<br><span class="hljs-built_in">print</span>(b,c)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name [‘age’, ‘sex’]</p>
+<h3 id="三、字典-dict-无序-增、删、改、查"><a href="#三、字典-dict-无序-增、删、改、查" class="headerlink" title="三、字典  dict  (无序) 增、删、改、查"></a>三、字典  dict  (无序) 增、删、改、查</h3><p><strong>键不重复，唯一</strong></p>
+<p><strong>创建一个空字典  a = {}</strong></p>
+<h4 id="1、创建字典"><a href="#1、创建字典" class="headerlink" title="1、创建字典"></a>1、创建字典</h4><p>1、创建在字典 a 中增加 元素 “name”:”xiaoming”  “age”:18</p>
+<p>(1)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;&#125;<br>a[<span class="hljs-string">&quot;name&quot;</span>] = <span class="hljs-string">&quot;xiaoming&quot;</span><br>a[<span class="hljs-string">&quot;age&quot;</span>]  = <span class="hljs-number">18</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p>(2)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-built_in">dict</span>(name=<span class="hljs-string">&quot;xiaoming&quot;</span>,age=<span class="hljs-number">18</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’, ‘age’: 18}</p>
+<h4 id="2、删除字典-pop-key-d"><a href="#2、删除字典-pop-key-d" class="headerlink" title="2、删除字典  pop(key,d)"></a>2、删除字典  <strong>pop(key,d)</strong></h4><p>删除字典 a 中的元素 “age”:18</p>
+<p>说明：pop(key,d) key：删除的 键  d：没有对应的键返回 d</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a.pop(<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’}</p>
+<p>删除字典 a 所有元素  <strong>clear()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a.clear()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  {}</p>
+<h4 id="3、修改字典元素"><a href="#3、修改字典元素" class="headerlink" title="3、修改字典元素"></a>3、修改字典元素</h4><p>把字典 a 的 “name” 键 的值 修改为 “小明”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a[<span class="hljs-string">&quot;name&quot;</span>] = <span class="hljs-string">&quot;小明&quot;</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘小明’, ‘age’: 18}</p>
+<h4 id="4、查询字典"><a href="#4、查询字典" class="headerlink" title="4、查询字典"></a>4、查询字典</h4><p>说明：get(key,”d”) 若字典d 中没有key键 则返回 “d” </p>
+<p>1、获取字段 a 的 “name” 键的值  <strong>get()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a.get(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>)<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a[<span class="hljs-string">&quot;name&quot;</span>]<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>&gt;&gt;&gt;</strong>  xiaoming</p>
+<p>2、遍历字典 a 所有的<strong>键</strong> <strong>keys()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.keys():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name age </p>
+<p>3、遍历字典 a 所有的<strong>值</strong> <strong>values()</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.values():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  xiaoming 18</p>
+<p>4、返回字典 a 中 的所有<strong>键对值</strong> <strong>items()</strong>  可迭代</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a.items()<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  dict_items([(‘name’, ‘xiaoming’), (‘age’, 18)])</p>
+<p>5、遍历所有键对值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> a.items():<br>	<span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot;:&quot;</span>,j,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>&gt;&gt;&gt;</strong>  name : xiaoming age : 18 </p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,111 +1201,6 @@
       </categories>
       <tags>
         <tag>进制转换</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python基础之常用数据结构</title>
-    <url>/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = []<br>a.append(<span class="hljs-string">&quot;name&quot;</span>)<br>a.append(<span class="hljs-string">&quot;age&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘age’]</p>
-<p>​        在 a 列表中指定位置 1 插入  sex <strong>insert()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>]<br>a.insert(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’, ‘age’]</p>
-<h4 id="2、删除-元素pop"><a href="#2、删除-元素pop" class="headerlink" title="2、删除 元素pop()"></a>2、删除 元素<strong>pop()</strong></h4><p>1、列表 a 第一个元素和最后一个元素 </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br>a.pop(<span class="hljs-number">0</span>)<br>a.pop()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘age’]</p>
-<p>2、删除列表中索引为 1 的元素 <strong>del list[index]</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-keyword">del</span> a[<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’]</p>
-<h4 id="3、修改元素"><a href="#3、修改元素" class="headerlink" title="3、修改元素"></a>3、修改元素</h4><p>1、把列表 a 中 第一个位置元素改为 “sno” </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br>a[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;sno&quot;</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sno’, ‘sex’]</p>
-<h4 id="4、查询-a-列表的元素-list-index"><a href="#4、查询-a-列表的元素-list-index" class="headerlink" title="4、查询 a 列表的元素 list[index]"></a>4、查询 a 列表的元素 <strong>list[index]</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name</p>
-<p>​      遍历列表 a 所有元素 <strong>for in</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>    <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
-<h3 id="二、元组-tuple-有序-查、解包"><a href="#二、元组-tuple-有序-查、解包" class="headerlink" title="二、元组  tuple  (有序 )  查、解包"></a>二、元组  tuple  (有序 )  查、解包</h3><p><strong>元组元素不可改变</strong></p>
-<h4 id="1、创建元组"><a href="#1、创建元组" class="headerlink" title="1、创建元组"></a>1、创建元组</h4><p>创建一个元组，并写入 name、age、sex</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,sex)<br></code></pre></td></tr></table></figure>
-
-<h4 id="2、查询元组"><a href="#2、查询元组" class="headerlink" title="2、查询元组"></a>2、查询元组</h4><p>1、查询元组 a 和只查询 第一个元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  (‘name’, ‘age’, ‘sex’)<br><strong>&gt;&gt;&gt;</strong>  name</p>
-<p>2、遍历所有元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
-<h4 id="3、元组解包"><a href="#3、元组解包" class="headerlink" title="3、元组解包"></a>3、元组解包</h4><p>把元组 a 解包</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br>b,c,d = a<br><span class="hljs-built_in">print</span>(b,c,d)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name age sex</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;sex&quot;</span>)<br>b,*c = a<br><span class="hljs-built_in">print</span>(b,c)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name [‘age’, ‘sex’]</p>
-<h3 id="三、字典-dict-无序-增、删、改、查"><a href="#三、字典-dict-无序-增、删、改、查" class="headerlink" title="三、字典  dict  (无序) 增、删、改、查"></a>三、字典  dict  (无序) 增、删、改、查</h3><p><strong>键不重复，唯一</strong></p>
-<p><strong>创建一个空字典  a = {}</strong></p>
-<h4 id="1、创建字典"><a href="#1、创建字典" class="headerlink" title="1、创建字典"></a>1、创建字典</h4><p>1、创建在字典 a 中增加 元素 “name”:”xiaoming”  “age”:18</p>
-<p>(1)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;&#125;<br>a[<span class="hljs-string">&quot;name&quot;</span>] = <span class="hljs-string">&quot;xiaoming&quot;</span><br>a[<span class="hljs-string">&quot;age&quot;</span>]  = <span class="hljs-number">18</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p>(2)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = <span class="hljs-built_in">dict</span>(name=<span class="hljs-string">&quot;xiaoming&quot;</span>,age=<span class="hljs-number">18</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’, ‘age’: 18}</p>
-<h4 id="2、删除字典-pop-key-d"><a href="#2、删除字典-pop-key-d" class="headerlink" title="2、删除字典  pop(key,d)"></a>2、删除字典  <strong>pop(key,d)</strong></h4><p>删除字典 a 中的元素 “age”:18</p>
-<p>说明：pop(key,d) key：删除的 键  d：没有对应的键返回 d</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a.pop(<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’}</p>
-<p>删除字典 a 所有元素  <strong>clear()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a.clear()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  {}</p>
-<h4 id="3、修改字典元素"><a href="#3、修改字典元素" class="headerlink" title="3、修改字典元素"></a>3、修改字典元素</h4><p>把字典 a 的 “name” 键 的值 修改为 “小明”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>a[<span class="hljs-string">&quot;name&quot;</span>] = <span class="hljs-string">&quot;小明&quot;</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘小明’, ‘age’: 18}</p>
-<h4 id="4、查询字典"><a href="#4、查询字典" class="headerlink" title="4、查询字典"></a>4、查询字典</h4><p>说明：get(key,”d”) 若字典d 中没有key键 则返回 “d” </p>
-<p>1、获取字段 a 的 “name” 键的值  <strong>get()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a.get(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>)<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a[<span class="hljs-string">&quot;name&quot;</span>]<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
-
-
-
-<p><strong>&gt;&gt;&gt;</strong>  xiaoming</p>
-<p>2、遍历字典 a 所有的<strong>键</strong> <strong>keys()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.keys():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name age </p>
-<p>3、遍历字典 a 所有的<strong>值</strong> <strong>values()</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.values():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  xiaoming 18</p>
-<p>4、返回字典 a 中 的所有<strong>键对值</strong> <strong>items()</strong>  可迭代</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br>b = a.items()<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  dict_items([(‘name’, ‘xiaoming’), (‘age’, 18)])</p>
-<p>5、遍历所有键对值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;xiaoming&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span> :<span class="hljs-number">18</span><br>&#125;<br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> a.items():<br>	<span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot;:&quot;</span>,j,end=<span class="hljs-string">&quot; &quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  name : xiaoming age : 18 </p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
 </search>

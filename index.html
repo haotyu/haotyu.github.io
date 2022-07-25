@@ -378,15 +378,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%8D%81-SQL%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" target="_self">
-          MYSQL数据库基础(十)SQL编程基础
+        <a href="/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B9%9D-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" target="_self">
+          MYSQL数据库基础(九)数据库索引
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%8D%81-SQL%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B9%9D-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" target="_self">
         <div>
-          说明：其实不用缩进的,我这是为了好看。 一、变量1、系统变量 @@变量名 查看当前系统版本和时间 1select @@variables as &quot;当前版本为&quot;,current_date();  2、用户变量 @变量名 定义一个用户变量 num 赋值为 100 123456set @num &#x3D; 100;  -- 方法一set @num :&#x3D; 100; --  方法二select
+          一、创建索引方法一： 在创建表时创建索引 1create table abc( id int, sex char(10), name varchar(100), unique index index_id(id)  #创建唯一值索引:id  索引名:为index_id );    方法二： 用create 创建索引 1create unique index index_sex on abc(sex
         </div>
       </a>
 
@@ -394,7 +394,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-01 00:12" pubdate>
+            <time datetime="2022-07-01 00:11" pubdate>
               2022-07-01
             </time>
           </div>
@@ -425,7 +425,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+              <a href="/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
             
           </div>
         

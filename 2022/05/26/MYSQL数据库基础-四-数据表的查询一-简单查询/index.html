@@ -1,336 +1,294 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="浩宇">
+    
+    <title>
+        
+            MYSQL数据库基础(四) 简单查询 |
+        
+        浩宇的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="一、简单查询1、查询student 数据表所有数据表：student 字段：* (所有) 条件：无">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MYSQL数据库基础(四) 简单查询">
-<meta property="og:url" content="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/index.html">
-<meta property="og:site_name" content="浩宇的博客">
-<meta property="og:description" content="一、简单查询1、查询student 数据表所有数据表：student 字段：* (所有) 条件：无">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-26T06:48:46.000Z">
-<meta property="article:modified_time" content="2022-07-26T06:22:29.381Z">
-<meta property="article:author" content="浩宇">
-<meta property="article:tag" content="简单查询">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/","path":"2022/05/26/MYSQL数据库基础-四-数据表的查询一-简单查询/","title":"MYSQL数据库基础(四) 简单查询"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>MYSQL数据库基础(四) 简单查询 | 浩宇的博客</title>
-  
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/tp.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"天才就是百分之九十九的汗水加百分之一的灵感。   --- 爱迪生"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="浩宇的博客" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
 
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                浩宇的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">浩宇的博客</p>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
     </div>
-  </div>
-</div>
+
+    <div class="window-mask"></div>
+
+</header>
 
 
+        </div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive          //归档 fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th           //分类 fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags                     //标签 fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user                   //关于 fa-fw"></i>关于</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
+        <div class="page-main-content-middle">
 
+            <div class="main-content">
 
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
+        <div class="article-title">
+            <span class="title-hover-animation">MYSQL数据库基础(四) 简单查询</span>
+        </div>
 
-    </div>
-  </div>
-
-</div>
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">一、简单查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">1、查询student 数据表所有数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8%E7%9A%84-%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">2、查询student 表的 指定字段数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8%E7%9A%84-%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE-%E5%B9%B6%E6%94%B9%E5%88%97%E5%90%8D%E6%98%BE%E7%A4%BA-as"><span class="nav-number">1.3.</span> <span class="nav-text">3、查询student 表的 指定字段数据   并改列名显示 (as)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E6%89%93%E6%8A%98-%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text">4、查询sc 表  打折(数学运算)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%8C%87%E5%AE%9A%E6%9D%A1%E4%BB%B6-where"><span class="nav-number">1.5.</span> <span class="nav-text">5、查询student 表 指定条件(where)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E5%8F%96%E5%8C%BA%E9%97%B4-between-and-%E3%80%81-not-between-and"><span class="nav-number">1.6.</span> <span class="nav-text">6、查询sc 表  取区间[(between  and)、(not between and)]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E5%8F%96%E9%9B%86%E5%90%88-in-%E3%80%81-not-in-%E3%80%81-or"><span class="nav-number">1.7.</span> <span class="nav-text">7、查询sc 表  取集合[(in)、(not in)、(or)]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E7%A9%BA%E5%80%BC-null"><span class="nav-number">1.8.</span> <span class="nav-text">8、查询student 表  空值(null)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%8F%AA%E5%8F%96-%E5%89%8D%E4%B8%A4%E6%9D%A1-limit"><span class="nav-number">1.9.</span> <span class="nav-text">9、查询student 表  只取 前两条(limit)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">二、简单查询(模糊查询)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%9F%A5%E8%AF%A2%E5%A7%93%E5%88%98%E7%9A%84%E5%AD%A6%E7%94%9F-like"><span class="nav-number">2.1.</span> <span class="nav-text">1、查询student 表  查询姓刘的学生(like)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%9F%A5%E8%AF%A2%E5%A7%93%E5%88%98%E7%9A%84%E5%AD%A6%E7%94%9F-regexp"><span class="nav-number">2.2.</span> <span class="nav-text">2、查询student 表  查询姓刘的学生(regexp)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2-%E5%BC%95%E5%85%A5%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">三、简单查询 (引入函数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%AD%A6%E7%94%9F%E5%B9%B4%E9%BE%84-year-%E3%80%81current-date"><span class="nav-number">3.1.</span> <span class="nav-text">1、查询student 表  学生年龄 [ year()、current_date()]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%8E%BB%E9%87%8D%E5%A4%8D-distinct"><span class="nav-number">3.2.</span> <span class="nav-text">2、查询student 表  去重复 (distinct)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E3%80%81"><span class="nav-number">3.3.</span> <span class="nav-text">3、查询sc 表  数学函数、</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="浩宇"
-      src="/images/tp.png">
-  <p class="site-author-name" itemprop="name">浩宇</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">18</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/tp.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">浩宇</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-05-26 14:48:46</span>
+        <span class="mobile">2022-05-26 14:48</span>
+    </span>
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%9B%9B-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%80-%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/tp.png">
-      <meta itemprop="name" content="浩宇">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="浩宇的博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="MYSQL数据库基础(四) 简单查询 | 浩宇的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          MYSQL数据库基础(四) 简单查询
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-26 14:48:46" itemprop="dateCreated datePublished" datetime="2022-05-26T14:48:46+08:00">2022-05-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-26 14:22:29" itemprop="dateModified" datetime="2022-07-26T14:22:29+08:00">2022-07-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+            </ul>
         </span>
-    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">简单查询</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
-        </div>
-      </header>
+                    </div>
+                </div>
+            </div>
+        
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h3 id="一、简单查询"><a href="#一、简单查询" class="headerlink" title="一、简单查询"></a>一、简单查询</h3><h4 id="1、查询student-数据表所有数据"><a href="#1、查询student-数据表所有数据" class="headerlink" title="1、查询student 数据表所有数据"></a>1、查询student 数据表所有数据</h4><p>表：student</p>
+        <div class="article-content markdown-body">
+            <h3 id="一、简单查询"><a href="#一、简单查询" class="headerlink" title="一、简单查询"></a>一、简单查询</h3><h4 id="1、查询student-数据表所有数据"><a href="#1、查询student-数据表所有数据" class="headerlink" title="1、查询student 数据表所有数据"></a>1、查询student 数据表所有数据</h4><p>表：student</p>
 <p>字段：* (所有)</p>
 <p>条件：无</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="2、查询student-表的-指定字段数据"><a href="#2、查询student-表的-指定字段数据" class="headerlink" title="2、查询student 表的 指定字段数据"></a>2、查询student 表的 指定字段数据</h4><p>表：student</p>
 <p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
 <p>条件：无</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sno,sname,ssex from student;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select sno,sname,ssex from student;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="3、查询student-表的-指定字段数据-并改列名显示-as"><a href="#3、查询student-表的-指定字段数据-并改列名显示-as" class="headerlink" title="3、查询student 表的 指定字段数据   并改列名显示 (as)"></a>3、查询student 表的 指定字段数据   并改列名显示 (as)</h4><p>表：student</p>
 <p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
 <p>条件：[sno  改为  学号 ]、[sname  改为 姓名 ]、[ssex 改为 性别 ]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sno as 学号,sname as 姓名,ssex as 性别 from student;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select sno as 学号,sname as 姓名,ssex as 性别 from student;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="4、查询sc-表-打折-数学运算"><a href="#4、查询sc-表-打折-数学运算" class="headerlink" title="4、查询sc 表  打折(数学运算)"></a>4、查询sc 表  打折(数学运算)</h4><p>表：sc</p>
 <p>字段：sno(学号)、degree(成绩)</p>
 <p>条件：成绩打八折</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sno,degree*0.8 from sc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select sno,degree*0.8 from sc;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="5、查询student-表-指定条件-where"><a href="#5、查询student-表-指定条件-where" class="headerlink" title="5、查询student 表 指定条件(where)"></a>5、查询student 表 指定条件(where)</h4><p>表：student</p>
 <p>字段：sno (学号)、sname(姓名)、ssex(性别)</p>
 <p>条件：ssex 字段数据为 “男”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sno,sname,ssex from student where ssex = &quot;男&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select sno,sname,ssex from student where ssex = "男";<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="6、查询sc-表-取区间-between-and-、-not-between-and"><a href="#6、查询sc-表-取区间-between-and-、-not-between-and" class="headerlink" title="6、查询sc 表  取区间[(between  and)、(not between and)]"></a>6、查询sc 表  取区间[(between  and)、(not between and)]</h4><p>表：sc</p>
 <p>字段：* (所有)、degree(成绩)</p>
 <p>条件：只要查询 degree(成绩) 在80~90 的 所有数据(between  and)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from sc where degree between 80 and 90;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from sc where degree between 80 and 90;<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：只要查询 degree(成绩) 不在80~90 的 所有数据(not between and)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from sc where degree not between 80 and 90;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from sc where degree not between 80 and 90;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="7、查询sc-表-取集合-in-、-not-in-、-or"><a href="#7、查询sc-表-取集合-in-、-not-in-、-or" class="headerlink" title="7、查询sc 表  取集合[(in)、(not in)、(or)]"></a>7、查询sc 表  取集合[(in)、(not in)、(or)]</h4><p>表：sc</p>
 <p>字段：* (所有)、degree(成绩)</p>
 <p>条件：只要查询 degree(成绩) 为 {92、85、90} 的数据(in)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from sc where degree in (92,85,90);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from sc where degree in (92,85,90);<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：只要查询 degree(成绩) 不为 {92、85、90}的 数据(not in)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from sc where degree not in (92,85,90);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from sc where degree not in (92,85,90);<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：只要查询 degree(成绩) 为 90 或 85 的 数据(in or)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from sc where degree in (90) or degree in (85);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from sc where degree in (90) or degree in (85);<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="8、查询student-表-空值-null"><a href="#8、查询student-表-空值-null" class="headerlink" title="8、查询student 表  空值(null)"></a>8、查询student 表  空值(null)</h4><p>表：student</p>
 <p>字段：classno (班级号)</p>
 <p>条件：查看 classno 字段   为空值的行(is)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where classno is null;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where classno is null;<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：查看 classno 字段   不为空值的行(not is)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where classno is not null;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where classno is not null;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="9、查询student-表-只取-前两条-limit"><a href="#9、查询student-表-只取-前两条-limit" class="headerlink" title="9、查询student 表  只取 前两条(limit)"></a>9、查询student 表  只取 前两条(limit)</h4><p>表：student</p>
 <p>字段：* (所有)</p>
 <p>条件：只要查询到的 前两条</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from student limit 2;</span><br><span class="line">select * from student limit 0,2;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student limit 2;<br>select * from student limit 0,2;<br></code></pre></td></tr></tbody></table></figure>
 
 <h3 id="二、简单查询-模糊查询"><a href="#二、简单查询-模糊查询" class="headerlink" title="二、简单查询(模糊查询)"></a>二、简单查询(模糊查询)</h3><h4 id="1、查询student-表-查询姓刘的学生-like"><a href="#1、查询student-表-查询姓刘的学生-like" class="headerlink" title="1、查询student 表  查询姓刘的学生(like)"></a>1、查询student 表  查询姓刘的学生(like)</h4><ol>
 <li>模糊查询：escape “#”  把 “#”  用于转义字符的字符 </li>
@@ -344,19 +302,19 @@
 <p>表：student</p>
 <p>字段：* (所有)、sname(姓名)、sdept(学院)</p>
 <p>条件：只要查询sname(姓名)   姓刘 的信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where sname like &quot;刘%&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where sname like "刘%";<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：只要查询sname(姓名)   姓刘   单名   的信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where sname like &quot;刘_&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where sname like "刘_";<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：只要查询sdept(学院) 为 “计算机_”  开始   的信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where sdept like &quot;计算机#_%&quot; escape &quot;#&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where sdept like "计算机#_%" escape "#";<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="2、查询student-表-查询姓刘的学生-regexp"><a href="#2、查询student-表-查询姓刘的学生-regexp" class="headerlink" title="2、查询student 表  查询姓刘的学生(regexp)"></a>2、查询student 表  查询姓刘的学生(regexp)</h4><p>正则表达式：regexp   </p>
 <p>表：student</p>
 <p>字段：* (所有)、sname(姓名)、sdept(学院)</p>
 <p>条件：只要查询sdept(学院) 为 “计算机_”  开始   的信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where sdept regexp &quot;^计算机_.&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select * from student where sdept regexp "^计算机_.";<br></code></pre></td></tr></tbody></table></figure>
 
 <h3 id="三、简单查询-引入函数"><a href="#三、简单查询-引入函数" class="headerlink" title="三、简单查询 (引入函数)"></a>三、简单查询 (引入函数)</h3><h4 id="1、查询student-表-学生年龄-year-、current-date"><a href="#1、查询student-表-学生年龄-year-、current-date" class="headerlink" title="1、查询student 表  学生年龄 [ year()、current_date()]"></a>1、查询student 表  学生年龄 [ year()、current_date()]</h4><ol>
 <li>函数：1、year()  取出年份</li>
@@ -367,13 +325,13 @@
 <p>表：student</p>
 <p>字段：sno (学号)、sname(姓名)、ssex(性别)、sbirthday(出生日期)</p>
 <p>条件：用函数处理 sbirthday 字段 ，拿到年龄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sno as 学号,sname as 姓名,ssex as 性别,year(current_date())-year(sbirthday) as 年龄 from student;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select sno as 学号,sname as 姓名,ssex as 性别,year(current_date())-year(sbirthday) as 年龄 from student;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="2、查询student-表-去重复-distinct"><a href="#2、查询student-表-去重复-distinct" class="headerlink" title="2、查询student 表  去重复 (distinct)"></a>2、查询student 表  去重复 (distinct)</h4><p>函数：1、distinct 去除重复值</p>
 <p>表：student</p>
 <p>字段：ssex(性别)、</p>
 <p>条件：用函数处理 ssex字段 ，拿到所拥有的性别</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct(ssex) from student;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select distinct(ssex) from student;<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="3、查询sc-表-数学函数、"><a href="#3、查询sc-表-数学函数、" class="headerlink" title="3、查询sc 表  数学函数、"></a>3、查询sc 表  数学函数、</h4><ol>
 <li>函数： 1、max() 提取最大值</li>
@@ -390,121 +348,263 @@
 <p>表：sc</p>
 <p>字段：degree(成绩) </p>
 <p>条件：查询degree 最大值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select max(degree) from sc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select max(degree) from sc;<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：查询degree 最小值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select min(degree) from sc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select min(degree) from sc;<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：查询degree 平均值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(degree) from sc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select avg(degree) from sc;<br></code></pre></td></tr></tbody></table></figure>
 
 <p>条件：查询degree 总行数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(degree) from sc;</span><br></pre></td></tr></table></figure>
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/" rel="tag"># 简单查询</a>
-          </div>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select count(degree) from sc;<br></code></pre></td></tr></tbody></table></figure>
+        </div>
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" rel="prev" title="MYSQL数据库基础(三) 数据数据增、删、改">
-                  <i class="fa fa-chevron-left"></i> MYSQL数据库基础(三) 数据数据增、删、改
-                </a>
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/">#简单查询</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MYSQL数据库基础(五) 多表链接查询</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MYSQL数据库基础(三) 数据数据增、删、改</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
             </div>
-            <div class="post-nav-item">
-                <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/" rel="next" title="MYSQL数据库基础(五) 多表链接查询">
-                  MYSQL数据库基础(五) 多表链接查询 <i class="fa fa-chevron-right"></i>
-                </a>
+        
+
+        
+    </div>
+</div>
+
+
+                
             </div>
-          </div>
-    </footer>
-  </article>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">浩宇</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
 </div>
 
+        </div>
+    
 
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
 
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
 
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
 
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
 </div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">浩宇</span>
-</div>
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-      <span>站点总字数：</span>
-    <span title="站点总字数">40k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">37 分钟</span>
-  </span>
-</div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
     </div>
-  </footer>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">一、简单查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">1、查询student 数据表所有数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8%E7%9A%84-%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">2、查询student 表的 指定字段数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8%E7%9A%84-%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE-%E5%B9%B6%E6%94%B9%E5%88%97%E5%90%8D%E6%98%BE%E7%A4%BA-as"><span class="nav-number">1.3.</span> <span class="nav-text">3、查询student 表的 指定字段数据   并改列名显示 (as)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E6%89%93%E6%8A%98-%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text">4、查询sc 表  打折(数学运算)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%8C%87%E5%AE%9A%E6%9D%A1%E4%BB%B6-where"><span class="nav-number">1.5.</span> <span class="nav-text">5、查询student 表 指定条件(where)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E5%8F%96%E5%8C%BA%E9%97%B4-between-and-%E3%80%81-not-between-and"><span class="nav-number">1.6.</span> <span class="nav-text">6、查询sc 表  取区间[(between  and)、(not between and)]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E5%8F%96%E9%9B%86%E5%90%88-in-%E3%80%81-not-in-%E3%80%81-or"><span class="nav-number">1.7.</span> <span class="nav-text">7、查询sc 表  取集合[(in)、(not in)、(or)]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E7%A9%BA%E5%80%BC-null"><span class="nav-number">1.8.</span> <span class="nav-text">8、查询student 表  空值(null)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%8F%AA%E5%8F%96-%E5%89%8D%E4%B8%A4%E6%9D%A1-limit"><span class="nav-number">1.9.</span> <span class="nav-text">9、查询student 表  只取 前两条(limit)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">二、简单查询(模糊查询)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%9F%A5%E8%AF%A2%E5%A7%93%E5%88%98%E7%9A%84%E5%AD%A6%E7%94%9F-like"><span class="nav-number">2.1.</span> <span class="nav-text">1、查询student 表  查询姓刘的学生(like)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E6%9F%A5%E8%AF%A2%E5%A7%93%E5%88%98%E7%9A%84%E5%AD%A6%E7%94%9F-regexp"><span class="nav-number">2.2.</span> <span class="nav-text">2、查询student 表  查询姓刘的学生(regexp)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2-%E5%BC%95%E5%85%A5%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">三、简单查询 (引入函数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%AD%A6%E7%94%9F%E5%B9%B4%E9%BE%84-year-%E3%80%81current-date"><span class="nav-number">3.1.</span> <span class="nav-text">1、查询student 表  学生年龄 [ year()、current_date()]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2student-%E8%A1%A8-%E5%8E%BB%E9%87%8D%E5%A4%8D-distinct"><span class="nav-number">3.2.</span> <span class="nav-text">2、查询student 表  去重复 (distinct)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2sc-%E8%A1%A8-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E3%80%81"><span class="nav-number">3.3.</span> <span class="nav-text">3、查询sc 表  数学函数、</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
 
 
 

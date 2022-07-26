@@ -1,480 +1,580 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="浩宇">
+    
+    <title>
+        
+            python基础之常用数据结构 |
+        
+        浩宇的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="一、列表list（有序）增、删、改、查1、在列表增加元素  append()​      创建一个空列表，增加元素 name 、age 1234a &#x3D; []a.append(&quot;name&quot;)a.append(&quot;age&quot;)print(a)  &gt;&gt;&gt;  [‘name’, ‘age’]">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python基础之常用数据结构">
-<meta property="og:url" content="http://example.com/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
-<meta property="og:site_name" content="浩宇的博客">
-<meta property="og:description" content="一、列表list（有序）增、删、改、查1、在列表增加元素  append()​      创建一个空列表，增加元素 name 、age 1234a &#x3D; []a.append(&quot;name&quot;)a.append(&quot;age&quot;)print(a)  &gt;&gt;&gt;  [‘name’, ‘age’]">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-28T12:40:03.000Z">
-<meta property="article:modified_time" content="2022-07-26T06:21:44.887Z">
-<meta property="article:author" content="浩宇">
-<meta property="article:tag" content="数据结构">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://example.com/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","path":"2022/06/28/python基础之常用数据结构/","title":"python基础之常用数据结构"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>python基础之常用数据结构 | 浩宇的博客</title>
-  
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/tp.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"天才就是百分之九十九的汗水加百分之一的灵感。   --- 爱迪生"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="浩宇的博客" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
 
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                浩宇的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">浩宇的博客</p>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
     </div>
-  </div>
-</div>
+
+    <div class="window-mask"></div>
+
+</header>
 
 
+        </div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive          //归档 fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th           //分类 fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags                     //标签 fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user                   //关于 fa-fw"></i>关于</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
+        <div class="page-main-content-middle">
 
+            <div class="main-content">
 
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
+        <div class="article-title">
+            <span class="title-hover-animation">python基础之常用数据结构</span>
+        </div>
 
-    </div>
-  </div>
-
-</div>
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8list%EF%BC%88%E6%9C%89%E5%BA%8F%EF%BC%89%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9%E3%80%81%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">一、列表list（有序）增、删、改、查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%9C%A8%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0-append"><span class="nav-number">1.1.</span> <span class="nav-text">1、在列表增加元素  append()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%A0%E9%99%A4-%E5%85%83%E7%B4%A0pop"><span class="nav-number">1.2.</span> <span class="nav-text">2、删除 元素pop()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.</span> <span class="nav-text">3、修改元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2-a-%E5%88%97%E8%A1%A8%E7%9A%84%E5%85%83%E7%B4%A0-list-index"><span class="nav-number">1.4.</span> <span class="nav-text">4、查询 a 列表的元素 list[index]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%83%E7%BB%84-tuple-%E6%9C%89%E5%BA%8F-%E6%9F%A5%E3%80%81%E8%A7%A3%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">二、元组  tuple  (有序 )  查、解包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E5%85%83%E7%BB%84"><span class="nav-number">2.1.</span> <span class="nav-text">1、创建元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2%E5%85%83%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text">2、查询元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%85%83%E7%BB%84%E8%A7%A3%E5%8C%85"><span class="nav-number">2.3.</span> <span class="nav-text">3、元组解包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E5%85%B8-dict-%E6%97%A0%E5%BA%8F-%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9%E3%80%81%E6%9F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、字典  dict  (无序) 增、删、改、查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E5%AD%97%E5%85%B8"><span class="nav-number">3.1.</span> <span class="nav-text">1、创建字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%A0%E9%99%A4%E5%AD%97%E5%85%B8-pop-key-d"><span class="nav-number">3.2.</span> <span class="nav-text">2、删除字典  pop(key,d)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E4%BF%AE%E6%94%B9%E5%AD%97%E5%85%B8%E5%85%83%E7%B4%A0"><span class="nav-number">3.3.</span> <span class="nav-text">3、修改字典元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8"><span class="nav-number">3.4.</span> <span class="nav-text">4、查询字典</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="浩宇"
-      src="/images/tp.png">
-  <p class="site-author-name" itemprop="name">浩宇</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">18</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/tp.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">浩宇</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-06-28 20:40:03</span>
+        <span class="mobile">2022-06-28 20:40</span>
+    </span>
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/tp.png">
-      <meta itemprop="name" content="浩宇">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="浩宇的博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="python基础之常用数据结构 | 浩宇的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          python基础之常用数据结构
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-06-28 20:40:03" itemprop="dateCreated datePublished" datetime="2022-06-28T20:40:03+08:00">2022-06-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-26 14:21:44" itemprop="dateModified" datetime="2022-07-26T14:21:44+08:00">2022-07-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/python/">python</a>&nbsp;
+                    </li>
+                
+            </ul>
         </span>
-    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
-        </div>
-      </header>
+                    </div>
+                </div>
+            </div>
+        
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = []</span><br><span class="line">a.append(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">a.append(<span class="string">&quot;age&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+        <div class="article-content markdown-body">
+            <h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">a = []<br>a.append(<span class="hljs-string">"name"</span>)<br>a.append(<span class="hljs-string">"age"</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘age’]</p>
 <span id="more"></span>
 
 <p>​        在 a 列表中指定位置 1 插入  sex <strong>insert()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">a.insert(<span class="number">1</span>,<span class="string">&quot;sex&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'age'</span>]<br>a.insert(<span class="hljs-number">1</span>,<span class="hljs-string">"sex"</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’, ‘age’]</p>
 <h4 id="2、删除-元素pop"><a href="#2、删除-元素pop" class="headerlink" title="2、删除 元素pop()"></a>2、删除 元素<strong>pop()</strong></h4><p>1、列表 a 第一个元素和最后一个元素 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>]</span><br><span class="line">a.pop(<span class="number">0</span>)</span><br><span class="line">a.pop()</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>]<br>a.pop(<span class="hljs-number">0</span>)<br>a.pop()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  [‘age’]</p>
 <p>2、删除列表中索引为 1 的元素 <strong>del list[index]</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>]</span><br><span class="line"><span class="keyword">del</span> a[<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>]<br><span class="hljs-keyword">del</span> a[<span class="hljs-number">1</span>]<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sex’]</p>
 <h4 id="3、修改元素"><a href="#3、修改元素" class="headerlink" title="3、修改元素"></a>3、修改元素</h4><p>1、把列表 a 中 第一个位置元素改为 “sno” </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>]</span><br><span class="line">a[<span class="number">1</span>] = <span class="string">&quot;sno&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>]<br>a[<span class="hljs-number">1</span>] = <span class="hljs-string">"sno"</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘sno’, ‘sex’]</p>
-<h4 id="4、查询-a-列表的元素-list-index"><a href="#4、查询-a-列表的元素-list-index" class="headerlink" title="4、查询 a 列表的元素 list[index]"></a>4、查询 a 列表的元素 <strong>list[index]</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="4、查询-a-列表的元素-list-index"><a href="#4、查询-a-列表的元素-list-index" class="headerlink" title="4、查询 a 列表的元素 list[index]"></a>4、查询 a 列表的元素 <strong>list[index]</strong></h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>]<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name</p>
 <p>​      遍历列表 a 所有元素 <strong>for in</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="built_in">print</span>(i,end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>    <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">" "</span>)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
 <h3 id="二、元组-tuple-有序-查、解包"><a href="#二、元组-tuple-有序-查、解包" class="headerlink" title="二、元组  tuple  (有序 )  查、解包"></a>二、元组  tuple  (有序 )  查、解包</h3><p><strong>元组元素不可改变</strong></p>
 <h4 id="1、创建元组"><a href="#1、创建元组" class="headerlink" title="1、创建元组"></a>1、创建元组</h4><p>创建一个元组，并写入 name、age、sex</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,sex)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,sex)<br></code></pre></td></tr></tbody></table></figure>
 
 <h4 id="2、查询元组"><a href="#2、查询元组" class="headerlink" title="2、查询元组"></a>2、查询元组</h4><p>1、查询元组 a 和只查询 第一个元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(a[<span class="hljs-number">0</span>])<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  (‘name’, ‘age’, ‘sex’)<br><strong>&gt;&gt;&gt;</strong>  name</p>
 <p>2、遍历所有元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	<span class="built_in">print</span>(i,end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">" "</span>)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name age sex </p>
 <h4 id="3、元组解包"><a href="#3、元组解包" class="headerlink" title="3、元组解包"></a>3、元组解包</h4><p>把元组 a 解包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>)</span><br><span class="line">b,c,d = a</span><br><span class="line"><span class="built_in">print</span>(b,c,d)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>)<br>b,c,d = a<br><span class="hljs-built_in">print</span>(b,c,d)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name age sex</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">&quot;name&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;sex&quot;</span>)</span><br><span class="line">b,*c = a</span><br><span class="line"><span class="built_in">print</span>(b,c)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = (<span class="hljs-string">"name"</span>,<span class="hljs-string">"age"</span>,<span class="hljs-string">"sex"</span>)<br>b,*c = a<br><span class="hljs-built_in">print</span>(b,c)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name [‘age’, ‘sex’]</p>
 <h3 id="三、字典-dict-无序-增、删、改、查"><a href="#三、字典-dict-无序-增、删、改、查" class="headerlink" title="三、字典  dict  (无序) 增、删、改、查"></a>三、字典  dict  (无序) 增、删、改、查</h3><p><strong>键不重复，唯一</strong></p>
 <p><strong>创建一个空字典  a = {}</strong></p>
 <h4 id="1、创建字典"><a href="#1、创建字典" class="headerlink" title="1、创建字典"></a>1、创建字典</h4><p>1、创建在字典 a 中增加 元素 “name”:”xiaoming”  “age”:18</p>
 <p>(1)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;&#125;</span><br><span class="line">a[<span class="string">&quot;name&quot;</span>] = <span class="string">&quot;xiaoming&quot;</span></span><br><span class="line">a[<span class="string">&quot;age&quot;</span>]  = <span class="number">18</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {}<br>a[<span class="hljs-string">"name"</span>] = <span class="hljs-string">"xiaoming"</span><br>a[<span class="hljs-string">"age"</span>]  = <span class="hljs-number">18</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p>(2)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">dict</span>(name=<span class="string">&quot;xiaoming&quot;</span>,age=<span class="number">18</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-built_in">dict</span>(name=<span class="hljs-string">"xiaoming"</span>,age=<span class="hljs-number">18</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’, ‘age’: 18}</p>
 <h4 id="2、删除字典-pop-key-d"><a href="#2、删除字典-pop-key-d" class="headerlink" title="2、删除字典  pop(key,d)"></a>2、删除字典  <strong>pop(key,d)</strong></h4><p>删除字典 a 中的元素 “age”:18</p>
 <p>说明：pop(key,d) key：删除的 键  d：没有对应的键返回 d</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">a.pop(<span class="string">&quot;age&quot;</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>a.pop(<span class="hljs-string">"age"</span>,<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘xiaoming’}</p>
 <p>删除字典 a 所有元素  <strong>clear()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">a.clear()</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>a.clear()<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  {}</p>
 <h4 id="3、修改字典元素"><a href="#3、修改字典元素" class="headerlink" title="3、修改字典元素"></a>3、修改字典元素</h4><p>把字典 a 的 “name” 键 的值 修改为 “小明”</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">a[<span class="string">&quot;name&quot;</span>] = <span class="string">&quot;小明&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>a[<span class="hljs-string">"name"</span>] = <span class="hljs-string">"小明"</span><br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  {‘name’: ‘小明’, ‘age’: 18}</p>
 <h4 id="4、查询字典"><a href="#4、查询字典" class="headerlink" title="4、查询字典"></a>4、查询字典</h4><p>说明：get(key,”d”) 若字典d 中没有key键 则返回 “d” </p>
 <p>1、获取字段 a 的 “name” 键的值  <strong>get()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">b = a.get(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;d&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>b = a.get(<span class="hljs-string">"name"</span>,<span class="hljs-string">"d"</span>)<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">b = a[<span class="string">&quot;name&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>b = a[<span class="hljs-string">"name"</span>]<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></tbody></table></figure>
 
 
 
 <p><strong>&gt;&gt;&gt;</strong>  xiaoming</p>
 <p>2、遍历字典 a 所有的<strong>键</strong> <strong>keys()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.keys():</span><br><span class="line">	<span class="built_in">print</span>(i,end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.keys():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">" "</span>)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name age </p>
 <p>3、遍历字典 a 所有的<strong>值</strong> <strong>values()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a.values():</span><br><span class="line">	<span class="built_in">print</span>(i,end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a.values():<br>	<span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">" "</span>)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  xiaoming 18</p>
 <p>4、返回字典 a 中 的所有<strong>键对值</strong> <strong>items()</strong>  可迭代</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line">b = a.items()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br>b = a.items()<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  dict_items([(‘name’, ‘xiaoming’), (‘age’, 18)])</p>
 <p>5、遍历所有键对值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span> :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> a.items():</span><br><span class="line">	<span class="built_in">print</span>(i,<span class="string">&quot;:&quot;</span>,j,end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = {<br>    <span class="hljs-string">"name"</span>:<span class="hljs-string">"xiaoming"</span>,<br>    <span class="hljs-string">"age"</span> :<span class="hljs-number">18</span><br>}<br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> a.items():<br>	<span class="hljs-built_in">print</span>(i,<span class="hljs-string">":"</span>,j,end=<span class="hljs-string">" "</span>)<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>&gt;&gt;&gt;</strong>  name : xiaoming age : 18 </p>
 
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
-          </div>
+        </div>
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AB-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%86%E5%9B%BE/" rel="prev" title="MYSQL数据库基础(八) 数据库视图">
-                  <i class="fa fa-chevron-left"></i> MYSQL数据库基础(八) 数据库视图
-                </a>
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">python基础之编码与进制</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AB-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%86%E5%9B%BE/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MYSQL数据库基础(八) 数据库视图</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
             </div>
-            <div class="post-nav-item">
-                <a href="/2022/06/28/python%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/" rel="next" title="python基础之编码与进制">
-                  python基础之编码与进制 <i class="fa fa-chevron-right"></i>
-                </a>
+        
+
+        
+    </div>
+</div>
+
+
+                
             </div>
-          </div>
-    </footer>
-  </article>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">浩宇</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
 </div>
 
+        </div>
+    
 
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
 
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
 
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
 
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
 </div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">浩宇</span>
-</div>
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-      <span>站点总字数：</span>
-    <span title="站点总字数">40k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">37 分钟</span>
-  </span>
-</div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
     </div>
-  </footer>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8list%EF%BC%88%E6%9C%89%E5%BA%8F%EF%BC%89%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9%E3%80%81%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">一、列表list（有序）增、删、改、查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%9C%A8%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0-append"><span class="nav-number">1.1.</span> <span class="nav-text">1、在列表增加元素  append()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%A0%E9%99%A4-%E5%85%83%E7%B4%A0pop"><span class="nav-number">1.2.</span> <span class="nav-text">2、删除 元素pop()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.</span> <span class="nav-text">3、修改元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2-a-%E5%88%97%E8%A1%A8%E7%9A%84%E5%85%83%E7%B4%A0-list-index"><span class="nav-number">1.4.</span> <span class="nav-text">4、查询 a 列表的元素 list[index]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%83%E7%BB%84-tuple-%E6%9C%89%E5%BA%8F-%E6%9F%A5%E3%80%81%E8%A7%A3%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">二、元组  tuple  (有序 )  查、解包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E5%85%83%E7%BB%84"><span class="nav-number">2.1.</span> <span class="nav-text">1、创建元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E8%AF%A2%E5%85%83%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text">2、查询元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%85%83%E7%BB%84%E8%A7%A3%E5%8C%85"><span class="nav-number">2.3.</span> <span class="nav-text">3、元组解包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E5%85%B8-dict-%E6%97%A0%E5%BA%8F-%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9%E3%80%81%E6%9F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、字典  dict  (无序) 增、删、改、查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E5%AD%97%E5%85%B8"><span class="nav-number">3.1.</span> <span class="nav-text">1、创建字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%A0%E9%99%A4%E5%AD%97%E5%85%B8-pop-key-d"><span class="nav-number">3.2.</span> <span class="nav-text">2、删除字典  pop(key,d)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E4%BF%AE%E6%94%B9%E5%AD%97%E5%85%B8%E5%85%83%E7%B4%A0"><span class="nav-number">3.3.</span> <span class="nav-text">3、修改字典元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8"><span class="nav-number">3.4.</span> <span class="nav-text">4、查询字典</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
 
 
 

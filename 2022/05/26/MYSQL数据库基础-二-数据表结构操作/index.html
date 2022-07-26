@@ -1,657 +1,432 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="浩宇">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="一、创建数据表1.创建数据表并设置主键数据表：xiaoyudi_tbl字段：name age数据类型和范围：varchar(20)   int设置不允许为空值：not null设置主键：primary key 1create table xiaoyudi_tbl(name varchar(20) not null primary key,age int); 2.创建数据表并设置字符集设置字符集为u">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一、创建数据表1.创建数据表并设置主键数据表：xiaoyudi_tbl字段：name age数据类型和范围：varchar(20)   int设置不允许为空值：not null设置主键：primary key">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MYSQL数据库基础(二) 数据表结构操作">
 <meta property="og:url" content="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="浩宇的博客">
-<meta property="og:description" content="一、创建数据表1.创建数据表并设置主键数据表：xiaoyudi_tbl字段：name age数据类型和范围：varchar(20)   int设置不允许为空值：not null设置主键：primary key 1create table xiaoyudi_tbl(name varchar(20) not null primary key,age int); 2.创建数据表并设置字符集设置字符集为u">
+<meta property="og:description" content="一、创建数据表1.创建数据表并设置主键数据表：xiaoyudi_tbl字段：name age数据类型和范围：varchar(20)   int设置不允许为空值：not null设置主键：primary key">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-26T06:43:23.000Z">
-<meta property="article:modified_time" content="2022-05-26T06:46:38.026Z">
+<meta property="article:modified_time" content="2022-07-26T06:23:14.193Z">
 <meta property="article:author" content="浩宇">
 <meta property="article:tag" content="数据表">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>MYSQL数据库基础(二) 数据表结构操作 - 浩宇的博客</title>
+<meta name="twitter:card" content="summary">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+<link rel="canonical" href="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/">
 
 
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/","path":"2022/05/26/MYSQL数据库基础-二-数据表结构操作/","title":"MYSQL数据库基础(二) 数据表结构操作"}</script>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MYSQL数据库基础(二) 数据表结构操作 | 浩宇的博客</title>
   
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="MYSQL数据库基础(二) 数据表结构操作"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-26 14:43" pubdate>
-          2022年5月26日 下午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          2.2k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          19 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">MYSQL数据库基础(二) 数据表结构操作</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="一、创建数据表"><a href="#一、创建数据表" class="headerlink" title="一、创建数据表"></a>一、创建数据表</h3><h5 id="1-创建数据表并设置主键"><a href="#1-创建数据表并设置主键" class="headerlink" title="1.创建数据表并设置主键"></a>1.创建数据表并设置主键</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl<br><em><strong>字段</strong></em>：name age<br><em><strong>数据类型和范围</strong></em>：varchar(20)   int<br><em><strong>设置不允许为空值</strong></em>：not null<br><em><strong>设置主键</strong></em>：primary key</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiaoyudi_tbl(<span class="hljs-type">name</span> <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">primary key</span>,age <span class="hljs-type">int</span>);<br></code></pre></td></tr></table></figure>
-<h5 id="2-创建数据表并设置字符集"><a href="#2-创建数据表并设置字符集" class="headerlink" title="2.创建数据表并设置字符集"></a>2.创建数据表并设置字符集</h5><p><em><strong>设置字符集为utf8</strong></em>：charset=utf8</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiaoyudi1_tbl(<span class="hljs-type">name</span> <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>),age <span class="hljs-type">int</span>)charset=utf8;<br></code></pre></td></tr></table></figure>
-<h3 id="二、数据表操作"><a href="#二、数据表操作" class="headerlink" title="二、数据表操作"></a>二、数据表操作</h3><h5 id="1、显示数据表的字段类型等"><a href="#1、显示数据表的字段类型等" class="headerlink" title="1、显示数据表的字段类型等"></a>1、显示数据表的字段类型等</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">desc xiaoyudi_tbl<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-<h5 id="2、修改数据表名"><a href="#2、修改数据表名" class="headerlink" title="2、修改数据表名"></a>2、修改数据表名</h5><p><em><strong>旧表名</strong></em>：xiaoyudi_tbl<br><em><strong>新表名</strong></em>：student_1_tbl</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> xiaoyudi_tbl <span class="hljs-keyword">to</span> student_1_tbl;<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xiaoyudi_tbl <span class="hljs-keyword">rename</span> <span class="hljs-keyword">as</span> student_1_tbl;<br></code></pre></td></tr></table></figure>
-<h5 id="3、查看数据表创建信息"><a href="#3、查看数据表创建信息" class="headerlink" title="3、查看数据表创建信息"></a>3、查看数据表创建信息</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiaoyudi_tbl;<br></code></pre></td></tr></table></figure>
-<h5 id="4、复制数据表"><a href="#4、复制数据表" class="headerlink" title="4、复制数据表"></a>4、复制数据表</h5><p><em><strong>复制表</strong></em>：student_1_tbl<br><em><strong>新建表</strong></em>：xiaoyudi_cp</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiaoyudi_cp <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> student_1_tbl;<br></code></pre></td></tr></table></figure>
-<h5 id="5、添加字段并设置默认值并加到指定字段之后-after"><a href="#5、添加字段并设置默认值并加到指定字段之后-after" class="headerlink" title="5、添加字段并设置默认值并加到指定字段之后(after)"></a>5、添加字段并设置默认值并加到指定字段之后(after)</h5><p><em><strong>添加字段</strong></em>：备注 varchar(50)<br><em><strong>默认值</strong></em>：无<br><em><strong>指定字段</strong></em>：classname</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> cp <span class="hljs-keyword">add</span> 备注 <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">default</span> &quot;无&quot; <span class="hljs-keyword">after</span> classname；<br></code></pre></td></tr></table></figure>
-<h5 id="6、修改字段长度-modify"><a href="#6、修改字段长度-modify" class="headerlink" title="6、修改字段长度(modify)"></a>6、修改字段长度(modify)</h5><p><em><strong>修改字段长度</strong></em>：header char(15)</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> cp modify <span class="hljs-keyword">header</span> <span class="hljs-type">char</span>(<span class="hljs-number">15</span>);<br></code></pre></td></tr></table></figure>
-<h3 id="7、修改字段-change"><a href="#7、修改字段-change" class="headerlink" title="7、修改字段(change)"></a>7、修改字段(change)</h3><p><em><strong>修改目标字段</strong></em>：inyear<br><em><strong>修改后字段</strong></em>：入学时间</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams">alter <span class="hljs-keyword">table</span> cp <span class="hljs-comment">change inyear</span> 入学时间;<br></code></pre></td></tr></table></figure>
-<h5 id="8、修改字段默认值"><a href="#8、修改字段默认值" class="headerlink" title="8、修改字段默认值"></a>8、修改字段默认值</h5><p><em><strong>字段</strong></em>：备注<br><em><strong>默认值</strong></em>：班级注释</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> cp <span class="hljs-keyword">alter</span> <span class="hljs-keyword">column</span> 备注 <span class="hljs-keyword">set</span> <span class="hljs-keyword">default</span> &quot;班级注释&quot;;<br></code></pre></td></tr></table></figure>
-<h5 id="9、删除字段"><a href="#9、删除字段" class="headerlink" title="9、删除字段"></a>9、删除字段</h5><p><em><strong>字段</strong></em>：inyear</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> cp <span class="hljs-keyword">drop</span> inyear;<br></code></pre></td></tr></table></figure>
-<h5 id="10、修改表的存储引擎-engine"><a href="#10、修改表的存储引擎-engine" class="headerlink" title="10、修改表的存储引擎(engine)"></a>10、修改表的存储引擎(engine)</h5><p><em><strong>引擎</strong>MyISAM</em>：MyISAM<br><em><strong>表</strong></em>：cp</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">alter table cp engine<span class="hljs-operator">=</span>MyISAM<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-<h5 id="11、删除表"><a href="#11、删除表" class="headerlink" title="11、删除表"></a>11、删除表</h5><p><em><strong>表</strong></em>：cp</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-keyword">drop</span> <span class="hljs-built_in">table</span> cp;<br></code></pre></td></tr></table></figure>
-<h3 id="三、主键约束-primary-key"><a href="#三、主键约束-primary-key" class="headerlink" title="三、主键约束(primary key)"></a>三、主键约束(primary key)</h3><h5 id="1、为表添加主键-primary-key"><a href="#1、为表添加主键-primary-key" class="headerlink" title="1、为表添加主键(primary key)"></a>1、为表添加主键(primary key)</h5><p><em><strong>表</strong></em>：student<br><em><strong>设置为主键的字段</strong></em>：sno</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">add</span> <span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(sno);<br></code></pre></td></tr></table></figure>
-<h5 id="2、为表添加主键并设置字段约束名-constraint"><a href="#2、为表添加主键并设置字段约束名-constraint" class="headerlink" title="2、为表添加主键并设置字段约束名(constraint)"></a>2、为表添加主键并设置字段约束名(constraint)</h5><p><em><strong>表</strong></em>：student<br><em><strong>设置为主键的字段</strong></em>：sno<br><em><strong>字段约束名</strong></em>：PK_student_sno</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span> PK_student_sno <span class="hljs-keyword">primary key</span>(sno);<br></code></pre></td></tr></table></figure>
-<h5 id="3、删除表主键"><a href="#3、删除表主键" class="headerlink" title="3、删除表主键"></a>3、删除表主键</h5><p><em><strong>表</strong></em>：sc<br><em><strong>主键</strong></em>：primary key</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> sc <span class="hljs-keyword">drop</span> <span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>;<br></code></pre></td></tr></table></figure>
-<h5 id="4、为表设置组合主键"><a href="#4、为表设置组合主键" class="headerlink" title="4、为表设置组合主键"></a>4、为表设置组合主键</h5><p><em><strong>表</strong></em>：sc<br><em><strong>组合主键</strong></em>：cno sno</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> sc <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span> PK_sc_cnosno <span class="hljs-keyword">primary key</span>(cno,sno);<br></code></pre></td></tr></table></figure>
-<h3 id="四、外键约束-foreign-key-参考-references"><a href="#四、外键约束-foreign-key-参考-references" class="headerlink" title="四、外键约束(foreign key)  参考(references)"></a>四、外键约束(foreign key)  参考(references)</h3><h5 id="1、为表添加外键"><a href="#1、为表添加外键" class="headerlink" title="1、为表添加外键"></a>1、为表添加外键</h5><p><em><strong>外键</strong></em>：foreign key<br><em><strong>参考表与字段</strong></em>：class(classno)<br><em><strong>字段约束名</strong></em>：FK_stu_class_classno</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span> FK_stu_class_classno <span class="hljs-keyword">foreign key</span>(classno) <span class="hljs-keyword">references</span> <span class="hljs-keyword">class</span>(classno);<br></code></pre></td></tr></table></figure>
-<h5 id="2、根据外键约束名删除表的外键"><a href="#2、根据外键约束名删除表的外键" class="headerlink" title="2、根据外键约束名删除表的外键"></a>2、根据外键约束名删除表的外键</h5><p><em><strong>表</strong></em>：class<br><em><strong>外键约束名</strong></em>：FK_class_department</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">class</span> <span class="hljs-keyword">drop</span> key FK_class_department;<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">class</span> <span class="hljs-keyword">drop</span> <span class="hljs-keyword">foreign key</span> FK_class_department;<br></code></pre></td></tr></table></figure>
-<h5 id="3、为表设置唯一值约束-unique-替代键-和约束名"><a href="#3、为表设置唯一值约束-unique-替代键-和约束名" class="headerlink" title="3、为表设置唯一值约束(unique)(替代键)和约束名"></a>3、为表设置唯一值约束(unique)(替代键)和约束名</h5><p><em><strong>表</strong></em>：student<br><em><strong>唯一值约束名</strong></em>：IX_student_sid<br><em><strong>设置的字段</strong></em>：sid</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span> IX_student_sid <span class="hljs-keyword">unique</span>(sid);<br></code></pre></td></tr></table></figure>
-<h5 id="4、删除唯一值约束-index"><a href="#4、删除唯一值约束-index" class="headerlink" title="4、删除唯一值约束(index)"></a>4、删除唯一值约束(index)</h5><p><em><strong>表</strong></em>：student<br><em><strong>唯一值约束名</strong></em>：IX_student_sid</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> IX_student_sid;<br></code></pre></td></tr></table></figure>
-<h5 id="6、为字段添加检查约束-check"><a href="#6、为字段添加检查约束-check" class="headerlink" title="6、为字段添加检查约束(check)"></a>6、为字段添加检查约束(check)</h5><p><em><strong>表</strong></em> ：xiao_tbl<br><em><strong>约束条件</strong></em> ：只允许填入<em>男</em>或<em>女</em>(sex = “男” or “女”)<br><strong>创建表时添加</strong>：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xiao_tbl(sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>),<span class="hljs-keyword">check</span>(sex <span class="hljs-operator">=</span> &quot;男&quot; <span class="hljs-keyword">or</span> &quot;女&quot;));<br></code></pre></td></tr></table></figure>
-<p><strong>创建表后修改表</strong>:</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xiao_tbl <span class="hljs-keyword">add</span> <span class="hljs-keyword">check</span>(sex = &quot;男&quot; <span class="hljs-keyword">or</span> &quot;女&quot;);<br></code></pre></td></tr></table></figure>
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%A8/">#数据表</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>MYSQL数据库基础(二) 数据表结构操作</div>
-      <div>http://example.com/2022/05/26/MYSQL数据库基础-二-数据表结构操作/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>浩宇</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年5月26日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" title="MYSQL数据库基础(三) 数据数据增、删、改">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MYSQL数据库基础(三) 数据数据增、删、改</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/" title="MYSQL数据库基础(一) 创建数据库">
-                        <span class="hidden-mobile">MYSQL数据库基础(一) 创建数据库</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
-      scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">浩宇的博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive          //归档 fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th           //分类 fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags                     //标签 fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user                   //关于 fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、创建数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%94%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.创建数据表并设置主键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.创建数据表并设置字符集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">二、数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%98%BE%E7%A4%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E7%AD%89"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、显示数据表的字段类型等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、修改数据表名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%9B%E5%BB%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.0.3.</span> <span class="nav-text">3、查看数据表创建信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E5%A4%8D%E5%88%B6%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">2.0.4.</span> <span class="nav-text">4、复制数据表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5%E5%B9%B6%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC%E5%B9%B6%E5%8A%A0%E5%88%B0%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E4%B9%8B%E5%90%8E-after"><span class="nav-number">2.0.5.</span> <span class="nav-text">5、添加字段并设置默认值并加到指定字段之后(after)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6%E3%80%81%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6-modify"><span class="nav-number">2.0.6.</span> <span class="nav-text">6、修改字段长度(modify)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5-change"><span class="nav-number">3.</span> <span class="nav-text">7、修改字段(change)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8%E3%80%81%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">3.0.1.</span> <span class="nav-text">8、修改字段默认值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9%E3%80%81%E5%88%A0%E9%99%A4%E5%AD%97%E6%AE%B5"><span class="nav-number">3.0.2.</span> <span class="nav-text">9、删除字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10%E3%80%81%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-engine"><span class="nav-number">3.0.3.</span> <span class="nav-text">10、修改表的存储引擎(engine)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="nav-number">3.0.4.</span> <span class="nav-text">11、删除表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9F-primary-key"><span class="nav-number">4.</span> <span class="nav-text">三、主键约束(primary key)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E4%B8%BB%E9%94%AE-primary-key"><span class="nav-number">4.0.1.</span> <span class="nav-text">1、为表添加主键(primary key)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E4%B8%BB%E9%94%AE%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F%E5%90%8D-constraint"><span class="nav-number">4.0.2.</span> <span class="nav-text">2、为表添加主键并设置字段约束名(constraint)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%BB%E9%94%AE"><span class="nav-number">4.0.3.</span> <span class="nav-text">3、删除表主键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E4%B8%BA%E8%A1%A8%E8%AE%BE%E7%BD%AE%E7%BB%84%E5%90%88%E4%B8%BB%E9%94%AE"><span class="nav-number">4.0.4.</span> <span class="nav-text">4、为表设置组合主键</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F-foreign-key-%E5%8F%82%E8%80%83-references"><span class="nav-number">5.</span> <span class="nav-text">四、外键约束(foreign key)  参考(references)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%A4%96%E9%94%AE"><span class="nav-number">5.0.1.</span> <span class="nav-text">1、为表添加外键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E6%A0%B9%E6%8D%AE%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%E5%90%8D%E5%88%A0%E9%99%A4%E8%A1%A8%E7%9A%84%E5%A4%96%E9%94%AE"><span class="nav-number">5.0.2.</span> <span class="nav-text">2、根据外键约束名删除表的外键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E4%B8%BA%E8%A1%A8%E8%AE%BE%E7%BD%AE%E5%94%AF%E4%B8%80%E5%80%BC%E7%BA%A6%E6%9D%9F-unique-%E6%9B%BF%E4%BB%A3%E9%94%AE-%E5%92%8C%E7%BA%A6%E6%9D%9F%E5%90%8D"><span class="nav-number">5.0.3.</span> <span class="nav-text">3、为表设置唯一值约束(unique)(替代键)和约束名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E5%88%A0%E9%99%A4%E5%94%AF%E4%B8%80%E5%80%BC%E7%BA%A6%E6%9D%9F-index"><span class="nav-number">5.0.4.</span> <span class="nav-text">4、删除唯一值约束(index)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6%E3%80%81%E4%B8%BA%E5%AD%97%E6%AE%B5%E6%B7%BB%E5%8A%A0%E6%A3%80%E6%9F%A5%E7%BA%A6%E6%9D%9F-check"><span class="nav-number">5.0.5.</span> <span class="nav-text">6、为字段添加检查约束(check)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="浩宇"
+      src="/images/tp.png">
+  <p class="site-author-name" itemprop="name">浩宇</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tp.png">
+      <meta itemprop="name" content="浩宇">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浩宇的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MYSQL数据库基础(二) 数据表结构操作 | 浩宇的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MYSQL数据库基础(二) 数据表结构操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-26 14:43:23" itemprop="dateCreated datePublished" datetime="2022-05-26T14:43:23+08:00">2022-05-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-26 14:23:14" itemprop="dateModified" datetime="2022-07-26T14:23:14+08:00">2022-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="一、创建数据表"><a href="#一、创建数据表" class="headerlink" title="一、创建数据表"></a>一、创建数据表</h3><h5 id="1-创建数据表并设置主键"><a href="#1-创建数据表并设置主键" class="headerlink" title="1.创建数据表并设置主键"></a>1.创建数据表并设置主键</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl<br><em><strong>字段</strong></em>：name age<br><em><strong>数据类型和范围</strong></em>：varchar(20)   int<br><em><strong>设置不允许为空值</strong></em>：not null<br><em><strong>设置主键</strong></em>：primary key</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table xiaoyudi_tbl(name varchar(20) not null primary key,age int);</span><br></pre></td></tr></table></figure>
+<h5 id="2-创建数据表并设置字符集"><a href="#2-创建数据表并设置字符集" class="headerlink" title="2.创建数据表并设置字符集"></a>2.创建数据表并设置字符集</h5><p><em><strong>设置字符集为utf8</strong></em>：charset=utf8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table xiaoyudi1_tbl(name varchar(20),age int)charset=utf8;</span><br></pre></td></tr></table></figure>
+<h3 id="二、数据表操作"><a href="#二、数据表操作" class="headerlink" title="二、数据表操作"></a>二、数据表操作</h3><h5 id="1、显示数据表的字段类型等"><a href="#1、显示数据表的字段类型等" class="headerlink" title="1、显示数据表的字段类型等"></a>1、显示数据表的字段类型等</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc xiaoyudi_tbl;</span><br></pre></td></tr></table></figure>
+<h5 id="2、修改数据表名"><a href="#2、修改数据表名" class="headerlink" title="2、修改数据表名"></a>2、修改数据表名</h5><p><em><strong>旧表名</strong></em>：xiaoyudi_tbl<br><em><strong>新表名</strong></em>：student_1_tbl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename table xiaoyudi_tbl to student_1_tbl;</span><br><span class="line">alter table xiaoyudi_tbl rename as student_1_tbl;</span><br></pre></td></tr></table></figure>
+<h5 id="3、查看数据表创建信息"><a href="#3、查看数据表创建信息" class="headerlink" title="3、查看数据表创建信息"></a>3、查看数据表创建信息</h5><p><em><strong>数据表</strong></em>：xiaoyudi_tbl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table xiaoyudi_tbl;</span><br></pre></td></tr></table></figure>
+<h5 id="4、复制数据表"><a href="#4、复制数据表" class="headerlink" title="4、复制数据表"></a>4、复制数据表</h5><p><em><strong>复制表</strong></em>：student_1_tbl<br><em><strong>新建表</strong></em>：xiaoyudi_cp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table xiaoyudi_cp select * from student_1_tbl;</span><br></pre></td></tr></table></figure>
+<h5 id="5、添加字段并设置默认值并加到指定字段之后-after"><a href="#5、添加字段并设置默认值并加到指定字段之后-after" class="headerlink" title="5、添加字段并设置默认值并加到指定字段之后(after)"></a>5、添加字段并设置默认值并加到指定字段之后(after)</h5><p><em><strong>添加字段</strong></em>：备注 varchar(50)<br><em><strong>默认值</strong></em>：无<br><em><strong>指定字段</strong></em>：classname</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp add 备注 varchar(50) default &quot;无&quot; after classname；</span><br></pre></td></tr></table></figure>
+<h5 id="6、修改字段长度-modify"><a href="#6、修改字段长度-modify" class="headerlink" title="6、修改字段长度(modify)"></a>6、修改字段长度(modify)</h5><p><em><strong>修改字段长度</strong></em>：header char(15)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp modify header char(15);</span><br></pre></td></tr></table></figure>
+<h3 id="7、修改字段-change"><a href="#7、修改字段-change" class="headerlink" title="7、修改字段(change)"></a>7、修改字段(change)</h3><p><em><strong>修改目标字段</strong></em>：inyear<br><em><strong>修改后字段</strong></em>：入学时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp change inyear 入学时间;</span><br></pre></td></tr></table></figure>
+<h5 id="8、修改字段默认值"><a href="#8、修改字段默认值" class="headerlink" title="8、修改字段默认值"></a>8、修改字段默认值</h5><p><em><strong>字段</strong></em>：备注<br><em><strong>默认值</strong></em>：班级注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp alter column 备注 set default &quot;班级注释&quot;;</span><br></pre></td></tr></table></figure>
+<h5 id="9、删除字段"><a href="#9、删除字段" class="headerlink" title="9、删除字段"></a>9、删除字段</h5><p><em><strong>字段</strong></em>：inyear</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp drop inyear;</span><br></pre></td></tr></table></figure>
+<h5 id="10、修改表的存储引擎-engine"><a href="#10、修改表的存储引擎-engine" class="headerlink" title="10、修改表的存储引擎(engine)"></a>10、修改表的存储引擎(engine)</h5><p><em><strong>引擎</strong>MyISAM</em>：MyISAM<br><em><strong>表</strong></em>：cp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table cp engine=MyISAM;</span><br></pre></td></tr></table></figure>
+<h5 id="11、删除表"><a href="#11、删除表" class="headerlink" title="11、删除表"></a>11、删除表</h5><p><em><strong>表</strong></em>：cp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table cp;</span><br></pre></td></tr></table></figure>
+<h3 id="三、主键约束-primary-key"><a href="#三、主键约束-primary-key" class="headerlink" title="三、主键约束(primary key)"></a>三、主键约束(primary key)</h3><h5 id="1、为表添加主键-primary-key"><a href="#1、为表添加主键-primary-key" class="headerlink" title="1、为表添加主键(primary key)"></a>1、为表添加主键(primary key)</h5><p><em><strong>表</strong></em>：student<br><em><strong>设置为主键的字段</strong></em>：sno</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student add primary key(sno);</span><br></pre></td></tr></table></figure>
+<h5 id="2、为表添加主键并设置字段约束名-constraint"><a href="#2、为表添加主键并设置字段约束名-constraint" class="headerlink" title="2、为表添加主键并设置字段约束名(constraint)"></a>2、为表添加主键并设置字段约束名(constraint)</h5><p><em><strong>表</strong></em>：student<br><em><strong>设置为主键的字段</strong></em>：sno<br><em><strong>字段约束名</strong></em>：PK_student_sno</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student add constraint PK_student_sno primary key(sno);</span><br></pre></td></tr></table></figure>
+<h5 id="3、删除表主键"><a href="#3、删除表主键" class="headerlink" title="3、删除表主键"></a>3、删除表主键</h5><p><em><strong>表</strong></em>：sc<br><em><strong>主键</strong></em>：primary key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table sc drop primary key;</span><br></pre></td></tr></table></figure>
+<h5 id="4、为表设置组合主键"><a href="#4、为表设置组合主键" class="headerlink" title="4、为表设置组合主键"></a>4、为表设置组合主键</h5><p><em><strong>表</strong></em>：sc<br><em><strong>组合主键</strong></em>：cno sno</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table sc add constraint PK_sc_cnosno primary key(cno,sno);</span><br></pre></td></tr></table></figure>
+<h3 id="四、外键约束-foreign-key-参考-references"><a href="#四、外键约束-foreign-key-参考-references" class="headerlink" title="四、外键约束(foreign key)  参考(references)"></a>四、外键约束(foreign key)  参考(references)</h3><h5 id="1、为表添加外键"><a href="#1、为表添加外键" class="headerlink" title="1、为表添加外键"></a>1、为表添加外键</h5><p><em><strong>外键</strong></em>：foreign key<br><em><strong>参考表与字段</strong></em>：class(classno)<br><em><strong>字段约束名</strong></em>：FK_stu_class_classno</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student add constraint FK_stu_class_classno foreign key(classno) references class(classno);</span><br></pre></td></tr></table></figure>
+<h5 id="2、根据外键约束名删除表的外键"><a href="#2、根据外键约束名删除表的外键" class="headerlink" title="2、根据外键约束名删除表的外键"></a>2、根据外键约束名删除表的外键</h5><p><em><strong>表</strong></em>：class<br><em><strong>外键约束名</strong></em>：FK_class_department</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table class drop key FK_class_department;</span><br><span class="line">alter table class drop foreign key FK_class_department;</span><br></pre></td></tr></table></figure>
+<h5 id="3、为表设置唯一值约束-unique-替代键-和约束名"><a href="#3、为表设置唯一值约束-unique-替代键-和约束名" class="headerlink" title="3、为表设置唯一值约束(unique)(替代键)和约束名"></a>3、为表设置唯一值约束(unique)(替代键)和约束名</h5><p><em><strong>表</strong></em>：student<br><em><strong>唯一值约束名</strong></em>：IX_student_sid<br><em><strong>设置的字段</strong></em>：sid</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student add constraint IX_student_sid unique(sid);</span><br></pre></td></tr></table></figure>
+<h5 id="4、删除唯一值约束-index"><a href="#4、删除唯一值约束-index" class="headerlink" title="4、删除唯一值约束(index)"></a>4、删除唯一值约束(index)</h5><p><em><strong>表</strong></em>：student<br><em><strong>唯一值约束名</strong></em>：IX_student_sid</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table student drop index IX_student_sid;</span><br></pre></td></tr></table></figure>
+<h5 id="6、为字段添加检查约束-check"><a href="#6、为字段添加检查约束-check" class="headerlink" title="6、为字段添加检查约束(check)"></a>6、为字段添加检查约束(check)</h5><p><em><strong>表</strong></em> ：xiao_tbl<br><em><strong>约束条件</strong></em> ：只允许填入<em>男</em>或<em>女</em>(sex = “男” or “女”)<br><strong>创建表时添加</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table xiao_tbl(sex char(2),check(sex = &quot;男&quot; or &quot;女&quot;));</span><br></pre></td></tr></table></figure>
+<p><strong>创建表后修改表</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table xiao_tbl add check(sex = &quot;男&quot; or &quot;女&quot;);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%A8/" rel="tag"># 数据表</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%80-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="prev" title="MYSQL数据库基础(一) 创建数据库">
+                  <i class="fa fa-chevron-left"></i> MYSQL数据库基础(一) 创建数据库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/" rel="next" title="MYSQL数据库基础(三) 数据数据增、删、改">
+                  MYSQL数据库基础(三) 数据数据增、删、改 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浩宇</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">40k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">37 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

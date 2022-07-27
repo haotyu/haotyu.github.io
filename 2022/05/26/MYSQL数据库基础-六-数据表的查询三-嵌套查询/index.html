@@ -235,12 +235,14 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
+            <br>
+
+<span id="more"></span>
+
+<h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
 <p>字段：cno 、degree sname</p>
 <p>作用：从student表查询到的结果当sc 表的查询条件的一部分</p>
 <p>要求：查询 “小明” 同学所选的 cno 和degree 。  </p>
-<span id="more"></span>
-
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">select cno,degree from sc where sno in (select sno from student where sname = "小明");<br></code></pre></td></tr></tbody></table></figure>
 
 <h3 id="二、嵌套查询-exists"><a href="#二、嵌套查询-exists" class="headerlink" title="二、嵌套查询(exists)"></a>二、嵌套查询(exists)</h3><p>exists 只会返回true 和 false</p>

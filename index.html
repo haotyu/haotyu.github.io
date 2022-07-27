@@ -319,12 +319,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <p>说明：其实不用缩进的,我这是为了好看。</p>
-<h3 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h3><p>1、系统变量 @@变量名</p>
-<p>查看当前系统版本和时间</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select @@variables as "当前版本为",current_date();<br></code></pre></td></tr></tbody></table></figure>
-
-<p>2、用户变量 @变量名</p>
+                        <br>
                     
                 </div>
 
@@ -364,12 +359,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、创建索引"><a href="#一、创建索引" class="headerlink" title="一、创建索引"></a>一、创建索引</h3><p><strong>方法一：</strong></p>
-<p>在创建表时创建索引</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">create table abc( id int, sex char(10), name varchar(100), unique index index_id(id)  #创建唯一值索引:id  索引名:为index_id );  <br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>方法二：</strong></p>
-<p>用create 创建索引</p>
+                        <br>
                     
                 </div>
 
@@ -409,10 +399,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、统一英文大小写"><a href="#一、统一英文大小写" class="headerlink" title="一、统一英文大小写"></a>一、统一英文大小写</h3><p>1、统一英文大写  <strong>upper()</strong></p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">"ABcDefg"</span><br><span class="hljs-built_in">print</span>(a.upper())<br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  ABCDEFG</p>
+                        <br>
                     
                 </div>
 
@@ -452,10 +439,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、Ascii-码转换-ord"><a href="#一、Ascii-码转换-ord" class="headerlink" title="一、Ascii 码转换   ord()"></a>一、Ascii 码转换   ord()</h3><p>将字符 a 转换为 Ascii码</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">"a"</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">ord</span>(a))<br></code></pre></td></tr></tbody></table></figure>
-
-<p> <strong>&gt;&gt;&gt;</strong>  97</p>
+                        <br>
                     
                 </div>
 
@@ -495,10 +479,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、列表list（有序）增、删、改、查"><a href="#一、列表list（有序）增、删、改、查" class="headerlink" title="一、列表list（有序）增、删、改、查"></a>一、列表list（有序）增、删、改、查</h3><h4 id="1、在列表增加元素-append"><a href="#1、在列表增加元素-append" class="headerlink" title="1、在列表增加元素  append()"></a>1、在列表增加元素  <strong>append()</strong></h4><p>​      创建一个空列表，增加元素 name 、age</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">a = []<br>a.append(<span class="hljs-string">"name"</span>)<br>a.append(<span class="hljs-string">"age"</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>&gt;&gt;&gt;</strong>  [‘name’, ‘age’]</p>
+                        <br>
                     
                 </div>
 
@@ -538,9 +519,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、视图介绍"><a href="#一、视图介绍" class="headerlink" title="一、视图介绍"></a>一、视图介绍</h3><p>理解：视图就像一个窗口，每个人在自己家里的窗口往外看，看到的风景是不一样的</p>
-<p>视图就是给表开一个窗口，让每个人(角色)看到的风景不一样(数据) </p>
-<p>窗口 (视图) 原本是没有风景(数据)的，它只是建立在风景(数据表)之上</p>
+                        <br>
                     
                 </div>
 
@@ -580,10 +559,7 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        <h3 id="一、按某列-升-降-排序-order-by"><a href="#一、按某列-升-降-排序-order-by" class="headerlink" title="一、按某列   升   降   排序(order by)"></a>一、按某列   升   降   排序(order by)</h3><h4 id="1、按升序排序-asc"><a href="#1、按升序排序-asc" class="headerlink" title="1、按升序排序(asc)"></a>1、按升序排序(asc)</h4><p>说明：系统默认按升序排序</p>
-<p>表：sc</p>
-<p>字段： * (所有)  degree(成绩)</p>
-<p>要求：查询sc 并 让 degree 按升序输出</p>
+                        <br>
                     
                 </div>
 

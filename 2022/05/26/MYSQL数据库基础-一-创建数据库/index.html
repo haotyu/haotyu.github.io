@@ -235,10 +235,12 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></tbody></table></figure>
-<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
+            <br>
+
 <span id="more"></span>
 
+<h3 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h3><h5 id="1、只创建数据库"><a href="#1、只创建数据库" class="headerlink" title="1、只创建数据库"></a>1、只创建数据库</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database 库名;<br></code></pre></td></tr></tbody></table></figure>
+<h5 id="2、创建数据库并设置编码规则"><a href="#2、创建数据库并设置编码规则" class="headerlink" title="2、创建数据库并设置编码规则"></a>2、创建数据库并设置编码规则</h5><p><strong>数据库</strong>：xiaoyudi<br><strong>character set</strong> ：设置数据库采用的字符集<br><strong>collate</strong>：指定数据库字符集的排序规则*</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database xiaoyudi character set utf8 collate utf8_general_ci;<br>create database xiaoyudi character set gbk collate gbk_chinese_ci;<br></code></pre></td></tr></tbody></table></figure>
 <h5 id="3、查看当前使用的数据库"><a href="#3、查看当前使用的数据库" class="headerlink" title="3、查看当前使用的数据库"></a>3、查看当前使用的数据库</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></tbody></table></figure>
 <h3 id="二、查看数据库信息"><a href="#二、查看数据库信息" class="headerlink" title="二、查看数据库信息"></a>二、查看数据库信息</h3><h5 id="1、查看数据库所支持存储引擎"><a href="#1、查看数据库所支持存储引擎" class="headerlink" title="1、查看数据库所支持存储引擎"></a>1、查看数据库所支持存储引擎</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show engines;<br></code></pre></td></tr></tbody></table></figure>

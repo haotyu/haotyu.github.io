@@ -235,14 +235,16 @@
         
 
         <div class="article-content markdown-body">
-            <p>说明：其实不用缩进的,我这是为了好看。</p>
+            <br>
+
+<span id="more"></span>
+
+<p>说明：其实不用缩进的,我这是为了好看。</p>
 <h3 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h3><p>1、系统变量 @@变量名</p>
 <p>查看当前系统版本和时间</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select @@variables as "当前版本为",current_date();<br></code></pre></td></tr></tbody></table></figure>
 
 <p>2、用户变量 @变量名</p>
-<span id="more"></span>
-
 <p>定义一个用户变量 num 赋值为 100</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @num = 100;  -- 方法一<br>set @num := 100; --  方法二<br>select @num := 100; -- 方法三<br>select 100 into @num;  -- 方法四<br>select a into @num from table_name where id = 1; -- 方法五 字段 id = 1的 a 字段的值为 100<br>select @num; -- 查看变量值<br></code></pre></td></tr></tbody></table></figure>
 

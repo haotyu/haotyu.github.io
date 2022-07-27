@@ -235,14 +235,16 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="一、创建索引"><a href="#一、创建索引" class="headerlink" title="一、创建索引"></a>一、创建索引</h3><p><strong>方法一：</strong></p>
+            <br>
+
+<span id="more"></span>
+
+<h3 id="一、创建索引"><a href="#一、创建索引" class="headerlink" title="一、创建索引"></a>一、创建索引</h3><p><strong>方法一：</strong></p>
 <p>在创建表时创建索引</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">create table abc( id int, sex char(10), name varchar(100), unique index index_id(id)  #创建唯一值索引:id  索引名:为index_id );  <br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>方法二：</strong></p>
 <p>用create 创建索引</p>
-<span id="more"></span>
-
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">create unique index index_sex on abc(sex); #创建唯一值索引:sex  索引名:为index_sex<br></code></pre></td></tr></tbody></table></figure>
 
 <p><strong>方法三：</strong></p>

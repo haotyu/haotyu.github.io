@@ -235,11 +235,13 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="一、视图介绍"><a href="#一、视图介绍" class="headerlink" title="一、视图介绍"></a>一、视图介绍</h3><p>理解：视图就像一个窗口，每个人在自己家里的窗口往外看，看到的风景是不一样的</p>
-<p>视图就是给表开一个窗口，让每个人(角色)看到的风景不一样(数据) </p>
-<p>窗口 (视图) 原本是没有风景(数据)的，它只是建立在风景(数据表)之上</p>
+            <br>
+
 <span id="more"></span>
 
+<h3 id="一、视图介绍"><a href="#一、视图介绍" class="headerlink" title="一、视图介绍"></a>一、视图介绍</h3><p>理解：视图就像一个窗口，每个人在自己家里的窗口往外看，看到的风景是不一样的</p>
+<p>视图就是给表开一个窗口，让每个人(角色)看到的风景不一样(数据) </p>
+<p>窗口 (视图) 原本是没有风景(数据)的，它只是建立在风景(数据表)之上</p>
 <h3 id="二、创建视图-view"><a href="#二、创建视图-view" class="headerlink" title="二、创建视图(view)"></a>二、创建视图(view)</h3><h4 id="1、单表创建视图"><a href="#1、单表创建视图" class="headerlink" title="1、单表创建视图"></a>1、单表创建视图</h4><p>要求：给student表,建立视图(stud)，并且视图只有student表的sno、sname、ssex列，</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">create view stud as select sno,sname,ssex from student;<br></code></pre></td></tr></tbody></table></figure>
 

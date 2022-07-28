@@ -72,34 +72,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MYSQL数据库基础(九)数据库索引</title>
-    <url>/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B9%9D-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/</url>
-    <content><![CDATA[<br>
-
-<span id="more"></span>
-
-<h3 id="一、创建索引"><a href="#一、创建索引" class="headerlink" title="一、创建索引"></a>一、创建索引</h3><p><strong>方法一：</strong></p>
-<p>在创建表时创建索引</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">create table abc( id int, sex char(10), name varchar(100), unique index index_id(id)  #创建唯一值索引:id  索引名:为index_id );  <br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>方法二：</strong></p>
-<p>用create 创建索引</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">create unique index index_sex on abc(sex); #创建唯一值索引:sex  索引名:为index_sex<br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>方法三：</strong></p>
-<p>在表创建完之后添加索引</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">alter table abc add unique index index_name(name); # add 添加唯一值索引:name  索引名:为index_name <br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="二、删除索引"><a href="#二、删除索引" class="headerlink" title="二、删除索引"></a>二、删除索引</h3><p>删除 名为 ：index_name 的索引</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">drop index index_name on abc;<br></code></pre></td></tr></tbody></table></figure>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>索引</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MYSQL数据库基础(三) 数据数据增、删、改</title>
     <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B8%89-%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%A2%9E%E3%80%81%E5%88%A0%E3%80%81%E6%94%B9/</url>
     <content><![CDATA[<br>
@@ -198,6 +170,34 @@
       </tags>
   </entry>
   <entry>
+    <title>MYSQL数据库基础(九)数据库索引</title>
+    <url>/2022/07/01/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%B9%9D-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<br>
+
+<span id="more"></span>
+
+<h3 id="一、创建索引"><a href="#一、创建索引" class="headerlink" title="一、创建索引"></a>一、创建索引</h3><p><strong>方法一：</strong></p>
+<p>在创建表时创建索引</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">create table abc( id int, sex char(10), name varchar(100), unique index index_id(id)  #创建唯一值索引:id  索引名:为index_id );  <br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>方法二：</strong></p>
+<p>用create 创建索引</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">create unique index index_sex on abc(sex); #创建唯一值索引:sex  索引名:为index_sex<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>方法三：</strong></p>
+<p>在表创建完之后添加索引</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">alter table abc add unique index index_name(name); # add 添加唯一值索引:name  索引名:为index_name <br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="二、删除索引"><a href="#二、删除索引" class="headerlink" title="二、删除索引"></a>二、删除索引</h3><p>删除 名为 ：index_name 的索引</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">drop index index_name on abc;<br></code></pre></td></tr></tbody></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>索引</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MYSQL数据库基础(五) 多表链接查询</title>
     <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E4%BA%94-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BA%8C-%E5%A4%9A%E8%A1%A8%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<br>
@@ -235,41 +235,6 @@
       </categories>
       <tags>
         <tag>多表链接</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL数据库基础(六) 嵌套查询</title>
-    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<br>
-
-<span id="more"></span>
-
-<h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
-<p>字段：cno 、degree sname</p>
-<p>作用：从student表查询到的结果当sc 表的查询条件的一部分</p>
-<p>要求：查询 “小明” 同学所选的 cno 和degree 。  </p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select cno,degree from sc where sno in (select sno from student where sname = "小明");<br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="二、嵌套查询-exists"><a href="#二、嵌套查询-exists" class="headerlink" title="二、嵌套查询(exists)"></a>二、嵌套查询(exists)</h3><p>exists 只会返回true 和 false</p>
-<p>表：student</p>
-<p>字段：sno,sname,sbirthday</p>
-<p>作用：把外层查询到的结果，放入内层去对比 结果成立 返回 true 反之 返回false</p>
-<p>要求：(1)   查询姓李的同学和年龄超过30岁的学号、姓名、年龄。  </p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select sno,sname,year(current_date)-year(sbirthday) from student a where sname like "李%" and exists(select * from student where year(current_date)-year(a.sbirthday)&gt;30);<br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="三、相关子查询-in"><a href="#三、相关子查询-in" class="headerlink" title="三、相关子查询(in)"></a>三、相关子查询(in)</h3><p>依赖于外层查询结果</p>
-<p>表：sc</p>
-<p>字段：* (所有)</p>
-<p>作用：把外层查询到的结果，放入内层去查询再返回结果</p>
-<p>要求：查询 每课成绩大于平均成绩的信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select * from sc a where degree &gt; (select avg(degree) from sc where a.sno=sc.sno);<br></code></pre></td></tr></tbody></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>嵌套查询</tag>
       </tags>
   </entry>
   <entry>
@@ -322,6 +287,41 @@
       <tags>
         <tag>视图</tag>
         <tag>view</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MYSQL数据库基础(六) 嵌套查询</title>
+    <url>/2022/05/26/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80-%E5%85%AD-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%B8%89-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<br>
+
+<span id="more"></span>
+
+<h3 id="一、嵌套查询-in"><a href="#一、嵌套查询-in" class="headerlink" title="一、嵌套查询(in)"></a>一、嵌套查询(in)</h3><p>表：student 、sc</p>
+<p>字段：cno 、degree sname</p>
+<p>作用：从student表查询到的结果当sc 表的查询条件的一部分</p>
+<p>要求：查询 “小明” 同学所选的 cno 和degree 。  </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select cno,degree from sc where sno in (select sno from student where sname = "小明");<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="二、嵌套查询-exists"><a href="#二、嵌套查询-exists" class="headerlink" title="二、嵌套查询(exists)"></a>二、嵌套查询(exists)</h3><p>exists 只会返回true 和 false</p>
+<p>表：student</p>
+<p>字段：sno,sname,sbirthday</p>
+<p>作用：把外层查询到的结果，放入内层去对比 结果成立 返回 true 反之 返回false</p>
+<p>要求：(1)   查询姓李的同学和年龄超过30岁的学号、姓名、年龄。  </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select sno,sname,year(current_date)-year(sbirthday) from student a where sname like "李%" and exists(select * from student where year(current_date)-year(a.sbirthday)&gt;30);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="三、相关子查询-in"><a href="#三、相关子查询-in" class="headerlink" title="三、相关子查询(in)"></a>三、相关子查询(in)</h3><p>依赖于外层查询结果</p>
+<p>表：sc</p>
+<p>字段：* (所有)</p>
+<p>作用：把外层查询到的结果，放入内层去查询再返回结果</p>
+<p>要求：查询 每课成绩大于平均成绩的信息</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><code class="hljs plaintext">select * from sc a where degree &gt; (select avg(degree) from sc where a.sno=sc.sno);<br></code></pre></td></tr></tbody></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>嵌套查询</tag>
       </tags>
   </entry>
   <entry>
@@ -451,22 +451,6 @@
       <tags>
         <tag>编程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>SQL注入</title>
-    <url>/2022/07/14/SQL%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="32d067b52af4b9cd889d16aa2186ac7a8d4c9f9f7b60d2fe4273632c62f57273">905c4d0cf8e39f3f4fbbf98d9acd6e655bed925345883a3fc5617c3319f3afd3</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">努力学习</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>MYSQL数据库基础(四) 简单查询</title>
@@ -606,6 +590,22 @@
       <tags>
         <tag>简单查询</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>SQL注入</title>
+    <url>/2022/07/14/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="32d067b52af4b9cd889d16aa2186ac7a8d4c9f9f7b60d2fe4273632c62f57273">905c4d0cf8e39f3f4fbbf98d9acd6e655bed925345883a3fc5617c3319f3afd3</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">努力学习</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>XSS跨站脚本攻击</title>

@@ -94,43 +94,11 @@
   <li class="hide-on-med-and-down nav-item">
     
     <a href="/categories" class="waves-effect waves-light">
-
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
       <span>分类</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-          
-          <i class="fa fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>数据库</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories/python/">
-          
-          <i class="fa fa-code" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>python</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/">
-          
-          <i class="fa fa-shield" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>web安全</span>
-        </a>
-      </li>
-      
-    </ul>
     
   </li>
   
@@ -215,46 +183,12 @@
         
         <li class="m-nav-item">
 	  
-		<a href="javascript:;">
+		<a href="/categories" class="waves-effect waves-light">
 			
-				<i class="fa-fw fas fa-bookmark"></i>
+			    <i class="fa-fw fas fa-bookmark"></i>
 			
 			分类
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/ " style="margin-left:75px">
-				  
-				   <i class="fa fa fa-book" style="position: absolute;left:50px" ></i>
-			      
-		          <span>数据库</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/categories/python/ " style="margin-left:75px">
-				  
-				   <i class="fa fa fa-code" style="position: absolute;left:50px" ></i>
-			      
-		          <span>python</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/categories/web%E5%AE%89%E5%85%A8/ " style="margin-left:75px">
-				  
-				   <i class="fa fa fa-shield" style="position: absolute;left:50px" ></i>
-			      
-		          <span>web安全</span>
-                  </a>
-                </li>
-              
-            </ul>
           
         </li>
         
@@ -461,14 +395,14 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">18</a></span>
+    <span class="count"><a href="/">19</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">5</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">分类</span>
 </div>
 
@@ -491,14 +425,14 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">18</a></span>
+    <span class="count"><a href="/">19</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">5</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">分类</span>
 </div>
 
@@ -607,7 +541,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07"]
+            data: ["2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08"]
         },
         yAxis: {
             type: 'value',
@@ -617,7 +551,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,10,3,5],
+                data: [0,0,0,0,0,0,0,0,0,10,3,5,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -659,7 +593,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"数据库","value":10},{"name":"python","value":5},{"name":"web安全","value":2},{"name":"文件上传漏洞","value":1},{"name":"XSS跨站脚本攻击","value":1}],
+                data: [{"name":"数据库","value":10},{"name":"Linux","value":1},{"name":"python","value":5},{"name":"web安全","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -683,7 +617,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["数据表","创建数据库","索引","聚集函数查询","视图","view","多表链接","嵌套查询","编程","简单查询"]
+                data: ["数据表","创建数据库","聚集函数查询","索引","多表链接","视图","view","嵌套查询","编程","简单查询"]
             }
         ],
         yAxis: [
